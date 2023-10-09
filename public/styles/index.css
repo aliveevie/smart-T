@@ -29,7 +29,16 @@ nav ul li {
 
 nav ul a{
     text-decoration: none;
-    color: black;
+}
+
+nav ul button{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
 }
 
 .images img{

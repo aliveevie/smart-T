@@ -68,22 +68,31 @@
                 <li>Name:Teacher 1 <span id="class" >Class: SSS</span>   <span id="total-students" >Total Students: 0</span> </li>
                 <li>Name:Teacher 1 <span id="class" >Class: SSS</span>   <span id="total-students" >Total Students: 0</span> </li>
             </ul>
-            <button class="buttons" >Add Teacher</button>
+            <button class="buttons"  onclick="showTeachers()" >Add Teacher</button>
             <button class="buttons" >Remove Teacher</button>
         </section>
         <section class="teacher-enrollment"  id="showTeachers" >
-            <h2>Teacher Enrollment</h2>
+            <h2>Add Teachers</h2>
+            <p>Add Form Master or Class Master to Manage your students for exams report sheet etc</p>
             <form method="post" action="">
                 <div class="form-group">
                     <label for="teacherName">Teacher Name:</label>
-                    <input type="text" id="teacherName" name="teacherName" required>
+                    <input type="text" id="teacherName" name="teacherName">
                 </div>
                 <div class="form-group">
-                    <label for="teacherSubject">Teaching Subject:</label>
-                    <input type="text" id="teacherSubject" name="teacherSubject" required>
+                    <label for="teacherclass">Teacher Class</label>
+                    <input type="text" id="teacherClass" name="teacherSubject">
+                </div>
+                <div class="form-group">
+                    <label for="teacherPhone">Teacher Phone Number</label>
+                    <input type="text" id="teacherClass" name="teacherSubject">
+                </div>
+                <div class="form-group">
+                    <label for="teacherEmail">Teacher Email Address</label>
+                    <input type="text" id="teacherClass" name="teacherSubject">
                 </div>
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Enroll Teacher</button>
+                <button type="submit">Add Teacher</button>
             </form>
         </section>
        
@@ -95,6 +104,7 @@
     <script>
 
         const updateForm = document.getElementById('showUpdateForm');
+        const updateTeachers = document.getElementById('showTeachers');
 
         function getUpdateForm(){
             updateForm.style.display = 'block'
@@ -103,6 +113,10 @@
         function hideDetails(e){
             e.preventDefault();
             updateForm.style.display = 'none'
+        }
+
+        function showTeachers(){
+            updateTeachers.style.display = 'block'
         }
 
         document.addEventListener('submit', hideDetails)

@@ -11,8 +11,8 @@ class Header extends HTMLElement{
         </div>
         <nav>
             <ul>
-                <a href="#" ><button><li>Login</li></button></a>
-               <a href="#" ><button><li>Register</li></button></a>
+                <a href="./views/login.html" ><button><li>Login</li></button></a>
+               <a href="#register" ><button><li>Register</li></button></a>
             </ul>
         </nav>
     </header>

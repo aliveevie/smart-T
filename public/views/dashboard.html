@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <title>School Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1> <span id="school-name" ></span>School Information</h1>
+    </header>
+    <main>
+        <section class="school-details">
+            <h2>School Details</h2>
+            <form id="schoolDetailsForm">
+                <div class="form-group">
+                    <label for="schoolName">School Name:</label>
+                    <input type="text" id="schoolName" name="schoolName" required>
+                </div>
+                <div class="form-group">
+                    <label for="numTeachers">Number of Teachers:</label>
+                    <input type="number" id="numTeachers" name="numTeachers" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="numStudents">Number of Students:</label>
+                    <input type="number" id="numStudents" name="numStudents" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="numClasses">Number of Classes:</label>
+                    <input type="number" id="numClasses" name="numClasses" min="0" required>
+                </div>
+                <!-- Add more fields as needed -->
+                <button type="submit">Save Details</button>
+            </form>
+        </section>
+        <section class="teacher-enrollment">
+            <h2>Teacher Enrollment</h2>
+            <form id="teacherEnrollmentForm">
+                <div class="form-group">
+                    <label for="teacherName">Teacher Name:</label>
+                    <input type="text" id="teacherName" name="teacherName" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacherSubject">Teaching Subject:</label>
+                    <input type="text" id="teacherSubject" name="teacherSubject" required>
+                </div>
+                <!-- Add more fields for teacher information -->
+                <button type="submit">Enroll Teacher</button>
+            </form>
+        </section>
+        <section class="school-statistics">
+            <h2>School Statistics</h2>
+            <ul>
+                <li>Total Teachers: <span id="totalTeachers">0</span></li>
+                <li>Total Students: <span id="totalStudents">0</span></li>
+                <li>Total Classes: <span id="totalClasses">0</span></li>
+                <!-- Add more statistics here -->
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Design by Ibrahim Abdulkarim</p>
+    </footer>
+</body>
+</html>

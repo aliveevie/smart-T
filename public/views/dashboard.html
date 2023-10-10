@@ -62,9 +62,16 @@
                 <button type="submit" >Update Details</button>
             </form>
         </section>
+        <section class="update-teachers" >
+            <h3>Teachers Managing Students</h3>
+            <ul>
+                <li>Name:Teacher 1 <span id="class" >Class: SSS</span>   <span id="total-students" >Total Students: 0</span> </li>
+            </ul>
+            <button class="buttons" >Add Teacher</button>
+        </section>
         <section class="teacher-enrollment"  id="showTeachers" >
             <h2>Teacher Enrollment</h2>
-            <form id="teacherEnrollmentForm">
+            <form method="post" action="">
                 <div class="form-group">
                     <label for="teacherName">Teacher Name:</label>
                     <input type="text" id="teacherName" name="teacherName" required>
@@ -84,6 +91,7 @@
     </footer>
 
     <script>
+
         const updateForm = document.getElementById('showUpdateForm');
 
         function getUpdateForm(){

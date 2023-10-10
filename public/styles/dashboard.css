@@ -136,9 +136,36 @@ section {
     display: none;
 }
 
+
 #showTeachers{
     display: none;
 }
+
+.update-teachers{
+    text-align: center;
+}
+
+.update-teachers ul{
+    margin-top: 20px;
+    list-style: none;
+
+}
+
+.update-teachers h3{
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.update-teachers ul li{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
 
 
 footer {

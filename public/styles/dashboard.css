@@ -116,6 +116,16 @@ section {
     justify-content: space-between;
 }
 
+.total-teachers{
+    background-color: tomato;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-right: 10px;
+}
+
 footer {
     background-color: #333;
     color: #fff;

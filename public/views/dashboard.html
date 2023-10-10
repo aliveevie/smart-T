@@ -41,7 +41,7 @@
         </section>
         <section class="school-details" id="showUpdateForm" >
             <h2>Update School Details</h2>
-            <form id="schoolDetailsForm">
+            <form id="schoolDetailsForm"  method="post" action="/updateForm">
                 <div class="form-group">
                     <label for="schoolName">School Name:</label>
                     <input type="text" id="schoolName" name="schoolName">
@@ -59,7 +59,7 @@
                     <input type="number" id="numClasses" name="numClasses" min="0">
                 </div>
                 <!-- Add more fields as needed -->
-                <button type="submit"  onclick="hideDetails()" >Update Details</button>
+                <button type="submit" >Update Details</button>
             </form>
         </section>
         <section class="teacher-enrollment"  id="showTeachers" >
@@ -90,11 +90,13 @@
             updateForm.style.display = 'block'
         }
 
-        function hideUpdateForm(){
-            if(updateForm.style.display==='block'){
-                updateForm.style.display==='none'
-            }
+        function hideDetails(e){
+            e.preventDefault();
+            updateForm.style.display = 'none'
         }
+
+        document.addEventListener('submit', hideDetails)
+        
 
         
 

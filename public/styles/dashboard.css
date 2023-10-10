@@ -41,13 +41,34 @@ form label {
     font-weight: bold;
 }
 
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input
+ {
+    width: 80%;
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 form button[type="submit"] {
     background-color: #007bff;
@@ -58,8 +79,32 @@ form button[type="submit"] {
     cursor: pointer;
 }
 
+.buttons{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 70%;
+    text-align: center;
+}
+
 section {
     margin-bottom: 30px;
+}
+
+.school-statistics h2{
+    text-align: center;
+}
+
+.school-statistics ul  {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.school-details{
+    display: none;
 }
 
 footer {

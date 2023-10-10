@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="button-stat" >
-                <button class="buttons" onclick="getUpdateForm" >Update School Information</button>
+                <button class="buttons" onclick="getUpdateForm()" >Update School Information</button>
             </div>
        
         </section>
@@ -44,22 +44,22 @@
             <form id="schoolDetailsForm">
                 <div class="form-group">
                     <label for="schoolName">School Name:</label>
-                    <input type="text" id="schoolName" name="schoolName" required>
+                    <input type="text" id="schoolName" name="schoolName">
                 </div>
                 <div class="form-group">
                     <label for="numTeachers">Number of Teachers:</label>
-                    <input type="number" id="numTeachers" name="numTeachers" min="0" required>
+                    <input type="number" id="numTeachers" name="numTeachers" min="0">
                 </div>
                 <div class="form-group">
                     <label for="numStudents">Number of Students:</label>
-                    <input type="number" id="numStudents" name="numStudents" min="0" required>
+                    <input type="number" id="numStudents" name="numStudents" min="0">
                 </div>
                 <div class="form-group">
                     <label for="numClasses">Number of Classes:</label>
-                    <input type="number" id="numClasses" name="numClasses" min="0" required>
+                    <input type="number" id="numClasses" name="numClasses" min="0">
                 </div>
                 <!-- Add more fields as needed -->
-                <button type="submit">Save Details</button>
+                <button type="submit"  onclick="hideDetails()" >Update Details</button>
             </form>
         </section>
         <section class="teacher-enrollment"  id="showTeachers" >
@@ -82,7 +82,21 @@
     <footer>
         <p>&copy; Design by Ibrahim Abdulkarim</p>
     </footer>
+
     <script>
+        const updateForm = document.getElementById('showUpdateForm');
+
+        function getUpdateForm(){
+            updateForm.style.display = 'block'
+        }
+
+        function hideUpdateForm(){
+            if(updateForm.style.display==='block'){
+                updateForm.style.display==='none'
+            }
+        }
+
+        
 
     </script>
 </body>

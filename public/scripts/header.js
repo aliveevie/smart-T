@@ -1,7 +1,9 @@
 class Header extends HTMLElement{
     constructor(){
+        super()
     }
-    board(){
+   
+    connectedCallback(){
         this.innerHTML = `
         <header class="header" >
         <div class="logo" >
@@ -14,7 +16,9 @@ class Header extends HTMLElement{
             </ul>
         </nav>
     </header>
-        `
+        `;
     }
 }
+
+customElements.define('header-element', Header);
 

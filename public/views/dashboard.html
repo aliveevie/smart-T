@@ -115,11 +115,17 @@
             updateForm.style.display = 'none'
         }
 
+
         function showTeachers(){
             updateTeachers.style.display = 'block'
         }
 
-        document.addEventListener('submit', hideDetails)
+        function hideTeachersDetails(){
+            updateTeachers.style.display = 'none'
+        }
+
+        document.addEventListener('submit', hideDetails);
+        document.addEventListener('submit', hideTeachersDetails);
         
 
         

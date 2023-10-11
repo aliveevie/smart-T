@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/dashboard.css">
+    <link  rel="stylesheet" href="../styles/student.css" />
     <title>Teacher Dashboard</title>
 </head>
 <body>
@@ -164,18 +165,57 @@
                 </form> 
             </h3>
         </section>
-        <section class="ca-form" id="showcaform">
-            <form>
-                <label for="studentName">Student Name:</label>
-                <input type="text" id="studentName" name="studentName" readonly>
-        
-                <label for="regNum">Registration Number:</label>
-                <input type="text" id="regNum" name="regNum" readonly>
-        
-                <h3>Continous Assessment</h3>
-                <div id="subjectContainer"></div>
-            </form>
+
+        <section class="report-sheet" id="showReportSheet">
+            <div class="header">
+                <h1 id="studentName">StudentName Continous Assessment</h1>
+            </div>
+            <div class="student-info">
+                <h2>Student Information</h2>
+                <p  id="studentName"  ><strong>Student Name:</strong>Student Name</p>
+                <p  id="regNum"><strong>Registration Number:</strong> 12345</p>
+                <p  id="class"><strong>Class:</strong> 10A</p>
+                <p  id="year"><strong>Academic Year:</strong> 2023-2024</p>
+            </div>
+           <!-- ... Previous HTML content ... -->
+
+        <div class="subjects">
+          
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>CA</th>
+                    <th>Exam</th>
+                    <th>Total</th>
+                    <th>Grade</th>
+                    <th>Remarks</th>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>80</td>
+                    <td>60</td>
+                    <td>140</td>
+                    <td>A</td>
+                    <td>Excellent</td>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td>75</td>
+                    <td>88</td>
+                    <td>163</td>
+                    <td>B</td>
+                    <td>Good</td>
+                </tr>
+                <tr id="student-data">
+                   
+                </tr>
+                <!-- Add more subjects as needed -->
+            </table>
+        </div>
+
+<!-- ... Remaining HTML content ... -->
         </section>
+        
         
 
     </main>
@@ -188,69 +228,6 @@
 
     <script src="../scripts/index.js" >
     </script>
-
-<script>
-    // Sample data for a student
-    var studentData = {
-        studentName: "John Doe",
-        regNum: "12345",
-        subjects: [
-            { name: "English", ca: 80, exam: 85, total: 165, grade: "A" },
-            { name: "Math", ca: 75, exam: 88, total: 163, grade: "B" },
-            { name: "Science", ca: 90, exam: 78, total: 168, grade: "A" },
-            // Add more subjects as needed
-        ]
-    };
-
-    // Get the form elements
-    var studentNameInput = document.getElementById("studentName");
-    var regNumInput = document.getElementById("regNum");
-    var subjectContainer = document.getElementById("subjectContainer");
-
-    // Set the values to the form fields
-    studentNameInput.value = studentData.studentName;
-    regNumInput.value = studentData.regNum;
-
-    // Create read-only subject fields with CA, exam, total, and grade
-    studentData.subjects.forEach(function (subject) {
-        var subjectDiv = document.createElement("div");
-        subjectDiv.className = "subject-info";
-
-        var subjectName = document.createElement("input");
-        subjectName.type = "text";
-        subjectName.value = subject.name;
-        subjectName.readOnly = true;
-
-        var caInput = document.createElement("input");
-        caInput.type = "text";
-        caInput.value = "CA: " + subject.ca;
-        caInput.readOnly = true;
-
-        var examInput = document.createElement("input");
-        examInput.type = "text";
-        examInput.value = "Exam: " + subject.exam;
-        examInput.readOnly = true;
-
-        var totalInput = document.createElement("input");
-        totalInput.type = "text";
-        totalInput.value = "Total: " + subject.total;
-        totalInput.readOnly = true;
-
-        var gradeInput = document.createElement("input");
-        gradeInput.type = "text";
-        gradeInput.value = "Grade: " + subject.grade;
-        gradeInput.readOnly = true;
-
-        subjectDiv.appendChild(subjectName);
-        subjectDiv.appendChild(caInput);
-        subjectDiv.appendChild(examInput);
-        subjectDiv.appendChild(totalInput);
-        subjectDiv.appendChild(gradeInput);
-
-        subjectContainer.appendChild(subjectDiv);
-    });
-</script>
-
 
 
 </body>

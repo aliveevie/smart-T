@@ -73,4 +73,8 @@ strong {
     font-weight: bold;
 }
 
+#showReportSheet{
+    display: none;
+}
+
 /* ... Remaining CSS content ... */

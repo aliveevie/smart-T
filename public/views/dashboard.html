@@ -69,7 +69,7 @@
                 <li>Name:Teacher 1 <span id="class" >Class: SSS</span>   <span id="total-students" >Total Students: 0</span> </li>
             </ul>
             <button class="buttons"  onclick="showTeachers()" >Add Teacher</button>
-            <button class="buttons" >Remove Teacher</button>
+            <button class="buttons"  onclick="removeTeacher()">Remove Teacher</button>
         </section>
 
         <section class="teacher-enrollment"  id="showTeachers" >
@@ -111,7 +111,7 @@
                 </div>
              
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Add Teacher</button>
+                <button type="submit">Remove Teacher</button>
             </form>
         </section>
        
@@ -124,6 +124,7 @@
 
         const updateForm = document.getElementById('showUpdateForm');
         const updateTeachers = document.getElementById('showTeachers');
+        const remove = document.getElementById("removeTeachers");
 
         function getUpdateForm(){
             updateForm.style.display = 'block'
@@ -132,6 +133,8 @@
         function hideDetails(e){
             e.preventDefault();
             updateForm.style.display = 'none'
+            updateTeachers.style.display = 'none'
+            remove.style.display = 'none'
         }
 
 
@@ -139,12 +142,14 @@
             updateTeachers.style.display = 'block'
         }
 
-        function hideTeachersDetails(){
-            updateTeachers.style.display = 'none'
+        
+
+        function removeTeacher(){
+            remove.style.display = 'block'
         }
 
         document.addEventListener('submit', hideDetails);
-        document.addEventListener('submit', hideTeachersDetails);
+        
         
 
         

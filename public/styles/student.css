@@ -77,4 +77,23 @@ strong {
     display: none;
 }
 
+#add-subject{
+    display: none;
+}
+
+#delete-subject{
+    display: none;
+}
+
+#delete-subject button{
+    width: 30%;
+    background-color: red;
+}
+
+#add-subject button {
+    width: 30%;
+    background-color: aqua;
+}
+
+
 /* ... Remaining CSS content ... */

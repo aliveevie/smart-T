@@ -107,7 +107,7 @@
                     <input type="text" id="teacherClass" name="teacherSubject">
                 </div>
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Add Teacher</button>
+                <button type="submit">Add Student</button>
             </form>
         </section>
 
@@ -149,36 +149,7 @@
                 </div>
             </div>
         </section>
-        <section class="science-subjects">
-            <h1>List of Science Subjects</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Biology</td>
-                    </tr>
-                    <tr>
-                        <td>Chemistry</td>
-                    </tr>
-                    <tr>
-                        <td>Physics</td>
-                    </tr>
-                    <tr>
-                        <td>Environmental Science</td>
-                    </tr>
-                    <tr>
-                        <td>Astronomy</td>
-                    </tr>
-                    <tr>
-                        <td>Geology</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+      
         <section class="continous-ca" id="cont-ass" >
             <h3>
                 <p>Enter the Student Details to Manage His CA</p>
@@ -194,6 +165,58 @@
                     <button type="submit">Search Students CA</button>
                 </form> 
             </h3>
+            <section class="science-subjects">
+                <h1>List of Subjects For the Students</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>Mathematics</td>
+                        </tr>
+                        <tr>
+                            <td>Physics</td>
+                        </tr>
+                        <tr>
+                            <td>Biology</td>
+                        </tr>
+                        <tr>
+                            <td>Chemistry</td>
+                        </tr>
+                        <tr>
+                            <td>Geography</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <section id="add-subject" >
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <label for="subject">Subject Name:</label>
+                            <input type="text" id="subjectName" name="subjectName" placeholder="Enter the name of the subject" >
+                        </div>
+                        <button class="buttons" >Add</button>
+                    </form>
+                </section>
+                <section id="delete-subject" >
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <label for="subject">Subject Name:</label>
+                            <input type="text" id="subjectName" name="subjectName" placeholder="Enter the name of the subject" >
+                        </div>
+                        <button class="buttons" >Delete</button>
+                    </form>
+                </section>
+                <button class="buttons" onclick="handleAddSubject()" >Add Subjects</button>
+                <button class="buttons" onclick="handleRemoveSubject()" >Delete Subjects</button>
+           
+            </section>
         </section>
 
         <section class="report-sheet" id="showReportSheet">
@@ -243,15 +266,12 @@
         </section>
     </main>
 
-
-
     <footer>
         <p>&copy; Design by Ibrahim Abdulkarim</p>
     </footer>
 
     <script src="../scripts/index.js" >
     </script>
-
 
 </body>
 </html>

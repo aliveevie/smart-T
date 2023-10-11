@@ -2,6 +2,7 @@
 const updateForm = document.getElementById('showUpdateForm');
 const updateTeachers = document.getElementById('showTeachers');
 const remove = document.getElementById("removeTeachers");
+const showContinuous = document.getElementById("cont-ass");
 
 function getUpdateForm(){
     updateForm.style.display = 'block'
@@ -12,6 +13,7 @@ function hideDetails(e){
     updateForm.style.display = 'none'
     updateTeachers.style.display = 'none'
     remove.style.display = 'none'
+    showContinuous.style.display = 'none'
 }
 
 
@@ -21,6 +23,10 @@ function showTeachers(){
 
 function removeTeacher(){
     remove.style.display = 'block'
+}
+
+function showContinousCa(){
+    showContinuous.style.display = 'block'
 }
 
 document.addEventListener('submit', hideDetails);

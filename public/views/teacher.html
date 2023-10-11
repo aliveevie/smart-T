@@ -136,7 +136,7 @@
                 </div>
                 <div class="total-teachers" >
                     <h3>Daily Attandance</h3>
-                    <button id="attendance"  class="buttons" >call Attandance</button>
+                    <button id="attendance"  class="buttons" >Call Attandance</button>
                 </div>
                 <div class="total-teachers" >
                     <h3>Prepare Lessons</h3>
@@ -147,8 +147,37 @@
                     <button id="lesson" class="buttons" >Parents Info</button>
                 </div>
             </div>
-           
         </section>
+        <section class="continous-ca" id="cont-ass" >
+            <h3>
+                <p>Enter the Student Details to Manage His CA</p>
+                <form method="post" action="">
+                    <div class="form-group">
+                        <label for="student">Student Name:</label>
+                        <input type="text" id="studentName" name="studentName" placeholder="Enter student name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="regNum">Student Reg Number:</label>
+                        <input type="text" id="regNumber" name="regNumber" placeholder="Enter your Student Registration Number" >
+                    </div>
+                    <button type="submit">Search Students CA</button>
+                </form> 
+            </h3>
+        </section>
+        <section class="ca-form" id="showcaform">
+            <form>
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" readonly>
+        
+                <label for="regNum">Registration Number:</label>
+                <input type="text" id="regNum" name="regNum" readonly>
+        
+                <h3>Continous Assessment</h3>
+                <div id="subjectContainer"></div>
+            </form>
+        </section>
+        
+
     </main>
 
 
@@ -159,5 +188,70 @@
 
     <script src="../scripts/index.js" >
     </script>
+
+<script>
+    // Sample data for a student
+    var studentData = {
+        studentName: "John Doe",
+        regNum: "12345",
+        subjects: [
+            { name: "English", ca: 80, exam: 85, total: 165, grade: "A" },
+            { name: "Math", ca: 75, exam: 88, total: 163, grade: "B" },
+            { name: "Science", ca: 90, exam: 78, total: 168, grade: "A" },
+            // Add more subjects as needed
+        ]
+    };
+
+    // Get the form elements
+    var studentNameInput = document.getElementById("studentName");
+    var regNumInput = document.getElementById("regNum");
+    var subjectContainer = document.getElementById("subjectContainer");
+
+    // Set the values to the form fields
+    studentNameInput.value = studentData.studentName;
+    regNumInput.value = studentData.regNum;
+
+    // Create read-only subject fields with CA, exam, total, and grade
+    studentData.subjects.forEach(function (subject) {
+        var subjectDiv = document.createElement("div");
+        subjectDiv.className = "subject-info";
+
+        var subjectName = document.createElement("input");
+        subjectName.type = "text";
+        subjectName.value = subject.name;
+        subjectName.readOnly = true;
+
+        var caInput = document.createElement("input");
+        caInput.type = "text";
+        caInput.value = "CA: " + subject.ca;
+        caInput.readOnly = true;
+
+        var examInput = document.createElement("input");
+        examInput.type = "text";
+        examInput.value = "Exam: " + subject.exam;
+        examInput.readOnly = true;
+
+        var totalInput = document.createElement("input");
+        totalInput.type = "text";
+        totalInput.value = "Total: " + subject.total;
+        totalInput.readOnly = true;
+
+        var gradeInput = document.createElement("input");
+        gradeInput.type = "text";
+        gradeInput.value = "Grade: " + subject.grade;
+        gradeInput.readOnly = true;
+
+        subjectDiv.appendChild(subjectName);
+        subjectDiv.appendChild(caInput);
+        subjectDiv.appendChild(examInput);
+        subjectDiv.appendChild(totalInput);
+        subjectDiv.appendChild(gradeInput);
+
+        subjectContainer.appendChild(subjectDiv);
+    });
+</script>
+
+
+
 </body>
 </html>

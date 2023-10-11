@@ -198,6 +198,13 @@ section {
     font-size: 30px;
 }
 
+.continous-ca{
+    text-align: center;
+}
+
+#cont-ass{
+    display: none;
+}
 
 footer {
     background-color: #333;

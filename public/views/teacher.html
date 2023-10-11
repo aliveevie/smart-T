@@ -18,6 +18,7 @@
                 <p id="phone" >070 000 0000</p>
             </div>
         </section>
+
         <section class="school-statistics">
             <h2>Class Statistics</h2>
             <div class="school-info" >
@@ -39,10 +40,10 @@
                 </div>
             </div>
             <div class="button-stat" >
-                <button class="buttons" onclick="getUpdateForm()" >Update Class Information</button>
+                <button class="buttons" onclick="getUpdateForm()">Update Class Information</button>
             </div>
-       
         </section>
+
         <section class="school-details" id="showUpdateForm" >
             <h2>Update Class Details</h2>
             <form id="schoolDetailsForm"  method="post" action="/updateForm">
@@ -110,24 +111,48 @@
         </section>
 
         <section class="teacher-enrollment"  id="removeTeachers" >
-            <h2>Remove Teacher</h2>
-            <p>Add the Necessary details to remove your teacher</p>
+            <h2>Remove Student</h2>
+            <p>Add the Necessary details to remove your student</p>
             <form method="post" action="">
                 <div class="form-group">
-                    <label for="teacherName">Teacher Name:</label>
-                    <input type="text" id="teacherName" name="teacherName">
+                    <label for="student">Student Name:</label>
+                    <input type="text" id="studentName" name="studentName">
                 </div>
                 <div class="form-group">
-                    <label for="teacherclass">Teacher Class:</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
+                    <label for="regNum">Student Reg Number</label>
+                    <input type="text" id="regNumber" name="regNumber" placeholder="Enter your Student Registration Number" >
                 </div>
              
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Remove Teacher</button>
+                <button type="submit">Remove Student</button>
             </form>
         </section>
-       
+        <section class="manage-peoples">
+            <h2>Manage Your Students</h2>
+            <div class="manage-students" >
+                <div class="total-teachers" >
+                    <h3>Continous Assessment</h3>
+                    <button id="CA"  class="buttons" >Prepare CA</button>
+                </div>
+                <div class="total-teachers" >
+                    <h3>Daily Attandance</h3>
+                    <button id="attendance"  class="buttons" >call Attandance</button>
+                </div>
+                <div class="total-teachers" >
+                    <h3>Prepare Lessons</h3>
+                    <button id="lesson" class="buttons" >Lessons</button>
+                </div>
+                <div class="total-teachers" >
+                    <h3>Update Student Parent Info</h3>
+                    <button id="lesson" class="buttons" >Parents Info</button>
+                </div>
+            </div>
+           
+        </section>
     </main>
+
+
+
     <footer>
         <p>&copy; Design by Ibrahim Abdulkarim</p>
     </footer>

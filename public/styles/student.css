@@ -95,5 +95,65 @@ strong {
     background-color: aqua;
 }
 
+#Assessment-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+#Assessment-form  h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+#Assessment-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#Assessment-form  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#Assessment-form  th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+#Assessment-form tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#Assessment-form tr:hover {
+    background-color: #ddd;
+}
+
+#Assessment-form  input[type="number"],
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+}
+
+/* Style for the Submit Button */
+#Assessment-form  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#Assessment-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
 
 /* ... Remaining CSS content ... */

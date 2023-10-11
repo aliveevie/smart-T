@@ -243,27 +243,59 @@
                 </tr>
                 <tr>
                     <td>English</td>
-                    <td>80</td>
-                    <td>60</td>
-                    <td>140</td>
-                    <td>A</td>
-                    <td>Excellent</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>F</td>
+                    <td>Poor</td>
                 </tr>
                 <tr>
                     <td>Math</td>
-                    <td>75</td>
-                    <td>88</td>
-                    <td>163</td>
-                    <td>B</td>
-                    <td>Good</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>F</td>
+                    <td>Poor</td>
                 </tr>
-                <tr id="student-data">
-                   
+                <tr id="student-data">  
                 </tr>
             </table>
+            <button class="buttons"  onclick="showAssessmentForm()" >Update Student CA</button>
         </div>
-
         </section>
+        <section id="Assessment-form">
+            <h3>Complete the Student Assessment Form</h3>
+            <form action="" method="post">
+                <table>
+                    <tr>
+                        <th>Subject</th>
+                        <th>CA</th>
+                        <th>Exam</th>
+                        <th>Total</th>
+                        <th>Grade</th>
+                        <th>Remarks</th>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td><input type="number" id="ca" name="ca" value="0"></td>
+                        <td><input type="number" id="exam" name="exam" value="0"></td>
+                        <td><input type="number" id="total" name="total" value="0"></td>
+                        <td><input type="text" id="grade" name="grade" value="F"></td>
+                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td><input type="number" id="ca" name="ca" value="0"></td>
+                        <td><input type="number" id="exam" name="exam" value="0"></td>
+                        <td><input type="number" id="total" name="total" value="0"></td>
+                        <td><input type="text" id="grade" name="grade" value="F"></td>
+                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+        
     </main>
 
     <footer>

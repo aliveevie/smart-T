@@ -5,6 +5,7 @@ const remove = document.getElementById("removeTeachers");
 const showContinuous = document.getElementById("cont-ass");
 const showAddSubjects = document.getElementById('add-subject');
 const deleteSubjects = document.getElementById('delete-subject');
+const reportSheet = document.getElementById('showReportSheet');
 
 
 function getUpdateForm(){
@@ -40,6 +41,12 @@ function handleAddSubject(){
 
 function handleRemoveSubject(){
     deleteSubjects.style.display = 'block'
+}
+
+function handleAssessment(){
+    reportSheet.style.display = 'block';
+    showContinuous.style.display = 'none';
+
 }
 
 document.addEventListener('submit', hideDetails);

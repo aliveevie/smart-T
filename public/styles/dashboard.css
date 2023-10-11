@@ -170,6 +170,10 @@ section {
     margin-bottom: 10px;
 }
 
+#removeTeachers{
+    display: none;
+}
+
 
 
 footer {

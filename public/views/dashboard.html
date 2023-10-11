@@ -71,6 +71,7 @@
             <button class="buttons"  onclick="showTeachers()" >Add Teacher</button>
             <button class="buttons" >Remove Teacher</button>
         </section>
+
         <section class="teacher-enrollment"  id="showTeachers" >
             <h2>Add Teachers</h2>
             <p>Add Form Master or Class Master to Manage your students for exams report sheet etc</p>
@@ -91,6 +92,24 @@
                     <label for="teacherEmail">Teacher Email Address</label>
                     <input type="text" id="teacherClass" name="teacherSubject">
                 </div>
+                <!-- Add more fields for teacher information -->
+                <button type="submit">Add Teacher</button>
+            </form>
+        </section>
+
+        <section class="teacher-enrollment"  id="removeTeachers" >
+            <h2>Remove Teacher</h2>
+            <p>Add the Necessary details to remove your teacher</p>
+            <form method="post" action="">
+                <div class="form-group">
+                    <label for="teacherName">Teacher Name:</label>
+                    <input type="text" id="teacherName" name="teacherName">
+                </div>
+                <div class="form-group">
+                    <label for="teacherclass">Teacher Class</label>
+                    <input type="text" id="teacherClass" name="teacherSubject">
+                </div>
+             
                 <!-- Add more fields for teacher information -->
                 <button type="submit">Add Teacher</button>
             </form>

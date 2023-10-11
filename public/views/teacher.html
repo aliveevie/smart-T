@@ -132,7 +132,7 @@
             <div class="manage-students" >
                 <div class="total-teachers" >
                     <h3>Continous Assessment</h3>
-                    <button id="CA"  class="buttons" >Prepare CA</button>
+                    <button id="CA"  class="buttons" onclick="showContinousCa()"  >Prepare CA</button>
                 </div>
                 <div class="total-teachers" >
                     <h3>Daily Attandance</h3>
@@ -157,34 +157,7 @@
         <p>&copy; Design by Ibrahim Abdulkarim</p>
     </footer>
 
-    <script>
-
-        const updateForm = document.getElementById('showUpdateForm');
-        const updateTeachers = document.getElementById('showTeachers');
-        const remove = document.getElementById("removeTeachers");
-
-        function getUpdateForm(){
-            updateForm.style.display = 'block'
-        }
-
-        function hideDetails(e){
-            e.preventDefault();
-            updateForm.style.display = 'none'
-            updateTeachers.style.display = 'none'
-            remove.style.display = 'none'
-        }
-
-
-        function showTeachers(){
-            updateTeachers.style.display = 'block'
-        }
-
-        function removeTeacher(){
-            remove.style.display = 'block'
-        }
-
-        document.addEventListener('submit', hideDetails);
-
+    <script src="../scripts/index.js" >
     </script>
 </body>
 </html>

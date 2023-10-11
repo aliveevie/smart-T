@@ -6,6 +6,11 @@ const showContinuous = document.getElementById("cont-ass");
 const showAddSubjects = document.getElementById('add-subject');
 const deleteSubjects = document.getElementById('delete-subject');
 const reportSheet = document.getElementById('showReportSheet');
+const caElements = document.querySelectorAll('#ca');
+const examElements = document.querySelectorAll('#exam');
+const totalElements = document.querySelectorAll('#total');
+const gradeElements = document.querySelectorAll('#grade');
+const remarksElements = document.querySelectorAll('#remarks');
 
 
 function getUpdateForm(){
@@ -48,5 +53,45 @@ function handleAssessment(){
     showContinuous.style.display = 'none';
 
 }
+
+
+
+function handleResultCalculation() {
+   
+
+    examElements.forEach((examElement, index) => {
+        const caElement = caElements[index];
+        const totalElement = totalElements[index];
+        const examValue = parseFloat(examElement.value);
+        const caValue = parseFloat(caElement.value);
+        const grades = gradeElements[index];
+        const remarks = remarksElements[index];
+        
+        totalElement.value = caValue + examValue;
+
+        const totalMarks = totalElement.value;
+        
+        if(totalMarks <= 39){
+            grades.value = 'F'
+            remarks.value = 'Fail'
+        }else if(totalMarks <= 49){
+            grades.value = 'D'
+            remarks.value = 'Fair'
+        }else if(totalMarks <= 59){
+            grades.value = 'C'
+            remarks.value = 'Credit'
+        }else if(totalMarks <= 69){
+            grades.value = 'B'
+            remarks.value = 'Very Good'
+        }else if(totalMarks >= 70 && totalMarks <= 100 ){
+            grades.value = 'A'
+            remarks.value = 'Excellent'
+        }
+           
+    });
+ 
+}
+
+
 
 document.addEventListener('submit', hideDetails);

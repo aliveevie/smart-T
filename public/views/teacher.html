@@ -231,7 +231,7 @@
                 <p  id="year"><strong>Academic Year:</strong> 2023-2024</p>
             </div>
           
-        <div class="subjects">
+        <div class="subjects"  id="showSubjects"  >
             <table>
                 <tr>
                     <th>Subject</th>
@@ -292,7 +292,8 @@
                         <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
                     </tr>
                 </table>
-                <input type="submit" value="Submit" onclick="handleResultCalculation()" >
+                <button class="buttons" onclick="handleResultCalculation()" >Update Result</button>
+                <input type="submit" value="Submit" onclick="hideAssessmentForm()" >
             </form>
         </section>
         

@@ -11,6 +11,8 @@ const examElements = document.querySelectorAll('#exam');
 const totalElements = document.querySelectorAll('#total');
 const gradeElements = document.querySelectorAll('#grade');
 const remarksElements = document.querySelectorAll('#remarks');
+const showScores = document.getElementById('showSubjects');
+const assessmentscores = document.getElementById('Assessment-form');
 
 
 function getUpdateForm(){
@@ -51,14 +53,21 @@ function handleRemoveSubject(){
 function handleAssessment(){
     reportSheet.style.display = 'block';
     showContinuous.style.display = 'none';
+}
 
+function showAssessmentForm(){
+    reportSheet.style.display = 'none';
+    assessmentscores.style.display = 'block';
+}
+
+function hideAssessmentForm(){
+    reportSheet.style.display = 'block';
+    assessmentscores.style.display = 'none';
 }
 
 
 
 function handleResultCalculation() {
-   
-
     examElements.forEach((examElement, index) => {
         const caElement = caElements[index];
         const totalElement = totalElements[index];
@@ -89,9 +98,8 @@ function handleResultCalculation() {
         }
            
     });
- 
+
 }
 
-
-
 document.addEventListener('submit', hideDetails);
+document.addEventListener('keypress', handleResultCalculation);

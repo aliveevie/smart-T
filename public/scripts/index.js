@@ -15,6 +15,8 @@ const showScores = document.getElementById('showSubjects');
 const assessmentscores = document.getElementById('Assessment-form');
 
 
+
+
 function getUpdateForm(){
     updateForm.style.display = 'block'
 }
@@ -65,6 +67,10 @@ function hideAssessmentForm(){
     assessmentscores.style.display = 'none';
 }
 
+function printStudentCA(){
+    window.print()
+}
+
 
 
 function handleResultCalculation() {
@@ -102,4 +108,3 @@ function handleResultCalculation() {
 }
 
 document.addEventListener('submit', hideDetails);
-document.addEventListener('keypress', handleResultCalculation);

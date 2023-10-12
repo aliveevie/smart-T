@@ -166,3 +166,13 @@ input[type="text"] {
     width: 100%;
     margin-top: 10px;
 }
+
+@media print{
+    header, .school-head, .school-statistics, .school-details, .update-teachers{
+        display: none;
+    }
+
+   
+
+    
+}

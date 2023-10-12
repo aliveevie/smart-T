@@ -221,66 +221,8 @@ footer {
     }
 }
 
-/* Base styles for larger screens */
-.school {
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.school h2 {
-    font-size: 24px;
-}
-
-/* School Details Input Form */
-.school-details {
-    margin-top: 20px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.school-details form {
-    text-align: left;
-}
-
-/* Teacher Enrollment Section */
-.teacher-enrollment {
-    margin-top: 20px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.teacher-enrollment form {
-    text-align: left;
-}
-
-/* School Statistics Section */
-.school-statistics {
-    margin-top: 20px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Styles for smaller screens */
-@media screen and (max-width: 768px) {
-    .school h2 {
-        font-size: 20px;
-    }
-
-    .school-details,
-    .teacher-enrollment,
-    .school-statistics {
-        margin-top: 10px;
-    }
-
-    .school-details input[type="number"],
-    .teacher-enrollment input[type="text"],
-    .teacher-enrollment input[type="number"],
-    .school-statistics ul {
-        font-size: 14px;
+@media print{
+    header{
+        display: none;
     }
 }
-

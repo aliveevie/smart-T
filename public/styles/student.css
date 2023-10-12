@@ -102,6 +102,7 @@ strong {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
+    display: none;
 }
 
 #Assessment-form  h3 {
@@ -149,6 +150,7 @@ input[type="text"] {
     padding: 10px 20px;
     cursor: pointer;
     width: 100%;
+    
 }
 
 #Assessment-form input[type="submit"]:hover {

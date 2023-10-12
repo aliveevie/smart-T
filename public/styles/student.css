@@ -157,4 +157,9 @@ input[type="text"] {
     background-color: #0056b3;
 }
 
+#Assessment-form button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 

@@ -200,3 +200,7 @@ input[type="text"] {
 .attandance-buttons button:last-child{
     background-color: red;
 }
+
+#show-attandance{
+    display: none;
+}

@@ -177,3 +177,7 @@ input[type="text"] {
         display: none;
     }
 }
+
+#call-student{
+    display: none;
+}

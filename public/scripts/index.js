@@ -14,6 +14,9 @@ const remarksElements = document.querySelectorAll('#remarks');
 const showScores = document.getElementById('showSubjects');
 const assessmentscores = document.getElementById('Assessment-form');
 const call_attance = document.getElementById('call-student');
+const show_attandance = document.getElementById('show-attandance');
+
+
 
 
 function getUpdateForm(){
@@ -74,6 +77,12 @@ function callAttandance(){
     call_attance.style.display = 'block'
 }
 
+function handleAttanceCall(){
+    if(call_attance.style.display =='block'){
+        show_attandance.style.display = 'block'
+        call_attance.style.display = 'none'
+    }
+}
 
 
 function handleResultCalculation() {

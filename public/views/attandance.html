@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <h1> <span id="teacher-name" ></span>Class Information</h1>
+        <h1> <span id="teacher-name" ></span>Attandance Information</h1>
     </header>
     <main>
-        <section class="school-head" >
+        <section class="school-head">
             <div class="head" >
                 <h3>Form Master</h3>
                 <p id="principal" >Master</p>
@@ -28,277 +28,24 @@
                     <p id="totalteachers" >0</p>
                 </div>
                 <div class="total-teachers" >
-                    <h3>Number of Subjects</h3>
+                    <h3>Current Students In Class</h3>
                     <p id="totalteachers" >0</p>
                 </div>
                 <div class="total-teachers" >
-                    <h3>Number of Boys</h3>
+                    <h3>Morning Attandance</h3>
                     <p id="totalteachers" >0</p>
                 </div>
                 <div class="total-teachers" >
-                    <h3>Number of Girls</h3>
+                    <h3>Afternoon Attandance</h3>
                     <p id="totalteachers" >0</p>
                 </div>
             </div>
             <div class="button-stat" >
-                <button class="buttons" onclick="getUpdateForm()">Update Class Information</button>
+                <button class="buttons" onclick="callAttandance()">Call Attandance</button>
             </div>
         </section>
 
-        <section class="school-details" id="showUpdateForm" >
-            <h2>Update Class Details</h2>
-            <form id="schoolDetailsForm"  method="post" action="/updateForm">
-                <div class="form-group">
-                    <label for="className">Class Name:</label>
-                    <input type="text" id="schoolName" name="schoolName">
-                </div>
-                <div class="form-group">
-                    <label for="numStudents">Number of Students:</label>
-                    <input type="number" id="numTeachers" name="numSubjects" min="0">
-                </div>
-                <div class="form-group">
-                    <label for="numSubjects">Number of Subjects:</label>
-                    <input type="number" id="numStudents" name="numStudents" min="0">
-                </div>
-                <div class="form-group">
-                    <label for="numClasses">Number of Classes:</label>
-                    <input type="number" id="numClasses" name="numClasses" min="0">
-                </div>
-                <div class="form-group">
-                    <label for="numboys">Number of Boys:</label>
-                    <input type="number" id="numClasses" name="numboys" min="0">
-                </div>
-                <div class="form-group">
-                    <label for="numboys">Number of Girls:</label>
-                    <input type="number" id="numClasses" name="numgirls" min="0">
-                </div>
-                <!-- Add more fields as needed -->
-                <button type="submit" >Update Details</button>
-            </form>
-        </section>
-        <section class="update-teachers" >
-            <h3>Students In the Class</h3>
-            <ul>
-                <li>Name:student 1 <span id="student-in-class" ></li>
-                <li>Name:student 2 <span id="student-in-class" ></li>
-            </ul>
-            <button class="buttons"  onclick="showTeachers()" >Add Student</button>
-            <button class="buttons"  onclick="removeTeacher()">Remove Student</button>
-        </section>
-
-        <section class="teacher-enrollment"  id="showTeachers" >
-            <h2>Add Students</h2>
-            <p>Add Number of Students in Your class</p>
-            <form method="post" action="">
-                <div class="form-group">
-                    <label for="studentName">Student Name:</label>
-                    <input type="text" id="studentName" name="teacherName">
-                </div>
-                <div class="form-group">
-                    <label for="regNum">Student Reg Number</label>
-                    <input type="text" id="regNumber" name="regNumber" placeholder="Enter your Student Registration Number" >
-                </div>
-                <div class="form-group">
-                    <label for="sex">Enter Student Sex</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
-                </div>
-                <div class="form-group">
-                    <label for="town">Home Town</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
-                </div>
-                <!-- Add more fields for teacher information -->
-                <button type="submit">Add Student</button>
-            </form>
-        </section>
-
-        <section class="teacher-enrollment"  id="removeTeachers" >
-            <h2>Remove Student</h2>
-            <p>Add the Necessary details to remove your student</p>
-            <form method="post" action="">
-                <div class="form-group">
-                    <label for="student">Student Name:</label>
-                    <input type="text" id="studentName" name="studentName">
-                </div>
-                <div class="form-group">
-                    <label for="regNum">Student Reg Number</label>
-                    <input type="text" id="regNumber" name="regNumber" placeholder="Enter your Student Registration Number" >
-                </div>
-             
-                <!-- Add more fields for teacher information -->
-                <button type="submit">Remove Student</button>
-            </form>
-        </section>
-        <section class="manage-peoples">
-            <h2>Manage Your Students</h2>
-            <div class="manage-students" >
-                <div class="total-teachers" >
-                    <h3>Continous Assessment</h3>
-                    <button id="CA"  class="buttons" onclick="showContinousCa()"  >Prepare CA</button>
-                </div>
-                <div class="total-teachers" >
-                    <h3>Daily Attandance</h3>
-                    <button id="attendance"  class="buttons" >Call Attandance</button>
-                </div>
-                <div class="total-teachers" >
-                    <h3>Prepare Lessons</h3>
-                    <button id="lesson" class="buttons" >Lessons</button>
-                </div>
-                <div class="total-teachers" >
-                    <h3>Update Student Parent Info</h3>
-                    <button id="lesson" class="buttons" >Parents Info</button>
-                </div>
-            </div>
-        </section>
-      
-        <section class="continous-ca" id="cont-ass" >
-            <h3>
-                <p>Enter the Student Details to Manage His CA</p>
-                <form method="post" action="">
-                    <div class="form-group">
-                        <label for="student">Student Name:</label>
-                        <input type="text" id="studentName" name="studentName" placeholder="Enter student name" >
-                    </div>
-                    <div class="form-group">
-                        <label for="regNum">Student Reg Number:</label>
-                        <input type="text" id="regNumber" name="regNumber" placeholder="Enter your Student Registration Number" >
-                    </div>
-                </form>
-                <button onclick="handleAssessment()"  class="buttons" >Search Students CA</button>
-            </h3>
-            <section class="science-subjects">
-                <h1>List of Subjects For the Students</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>English</td>
-                        </tr>
-                        <tr>
-                            <td>Mathematics</td>
-                        </tr>
-                        <tr>
-                            <td>Physics</td>
-                        </tr>
-                        <tr>
-                            <td>Biology</td>
-                        </tr>
-                        <tr>
-                            <td>Chemistry</td>
-                        </tr>
-                        <tr>
-                            <td>Geography</td>
-                        </tr>
-                    </tbody>
-                </table>
-    
-                <section id="add-subject" >
-                    <form method="post" action="">
-                        <div class="form-group">
-                            <label for="subject">Subject Name:</label>
-                            <input type="text" id="subjectName" name="subjectName" placeholder="Enter the name of the subject" >
-                        </div>
-                        <button class="buttons" >Add</button>
-                    </form>
-                </section>
-                <section id="delete-subject" >
-                    <form method="post" action="">
-                        <div class="form-group">
-                            <label for="subject">Subject Name:</label>
-                            <input type="text" id="subjectName" name="subjectName" placeholder="Enter the name of the subject" >
-                        </div>
-                        <button class="buttons" >Delete</button>
-                    </form>
-                </section>
-                <button class="buttons" onclick="handleAddSubject()" >Add Subjects</button>
-                <button class="buttons" onclick="handleRemoveSubject()" >Delete Subjects</button>
-           
-            </section>
-        </section>
-
-        <section class="report-sheet" id="showReportSheet">
-            <div class="header">
-                <h1 id="studentName">StudentName Continous Assessment</h1>
-            </div>
-            <div class="student-info">
-                <h2>Student Information</h2>
-                <p  id="studentName"  ><strong>Student Name:</strong>Student Name</p>
-                <p  id="regNum"><strong>Registration Number:</strong> 12345</p>
-                <p  id="class"><strong>Class:</strong> 10A</p>
-                <p  id="year"><strong>Academic Year:</strong> 2023-2024</p>
-            </div>
-          
-        <div class="subjects"  id="showSubjects"  >
-            <table>
-                <tr>
-                    <th>Subject</th>
-                    <th>CA</th>
-                    <th>Exam</th>
-                    <th>Total</th>
-                    <th>Grade</th>
-                    <th>Remarks</th>
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>F</td>
-                    <td>Poor</td>
-                </tr>
-                <tr>
-                    <td>Math</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>F</td>
-                    <td>Poor</td>
-                </tr>
-                <tr id="student-data">  
-                </tr>
-            </table>
-            <button class="buttons"  onclick="showAssessmentForm()" >Update Student CA</button>
-            <button class="buttons" onclick="printStudentCA()" >Print Student Result</button>
-        </div>
-        </section>
-        <section id="Assessment-form">
-            <h3>Complete the Student Assessment Form</h3>
-            <form action="" method="post">
-                <table>
-                    <tr>
-                        <th>Subject</th>
-                        <th>CA</th>
-                        <th>Exam</th>
-                        <th>Total</th>
-                        <th>Grade</th>
-                        <th>Remarks</th>
-                    </tr>
-                    <tr>
-                        <td>English</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
-                    <tr>
-                        <td>Mathematics</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
-                </table>
-                <button class="buttons" onclick="handleResultCalculation()" >Update Result</button>
-                <input type="submit" value="Submit" onclick="hideAssessmentForm()" >
-            </form>
-        </section>
-
-        
+       
         
     </main>
 

@@ -183,9 +183,20 @@ input[type="text"] {
 }
 
 .attandance-buttons{
+    margin-top: 20px;
     display: flex;
+    justify-content: space-around;
+
 }
 
 .attandance-buttons button{
     width: 20%;
+}
+
+.attandance-buttons button:first-child{
+    background-color: green;
+}
+
+.attandance-buttons button:last-child{
+    background-color: red;
 }

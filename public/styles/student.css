@@ -168,11 +168,12 @@ input[type="text"] {
 }
 
 @media print{
-    header, .school-head, .school-statistics, .school-details, .update-teachers{
+    header, .school-head, .school-statistics, 
+    .school-details, .update-teachers, .manage-peoples, footer, title, head{
+        display: none;
+    } 
+
+    .subjects button{
         display: none;
     }
-
-   
-
-    
 }

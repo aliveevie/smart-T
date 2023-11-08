@@ -1,6 +1,3 @@
-body{
-    background-color: antiquewhite;
-}
 
 /* Base styles for your header */
 .header {
@@ -47,7 +44,7 @@ nav ul button{
 }
 
 .buttons{
-    background-color: #007bff;
+
     color: #fff;
     border: none;
     padding: 10px;
@@ -222,20 +219,6 @@ footer {
     }
 }
 
-.background-video {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
 
-.background-video video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Scale the video to cover the entire section */
-}
 
 

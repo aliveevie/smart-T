@@ -1,18 +1,4 @@
-.background-video {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
 
-.background-video video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Scale the video to cover the entire section */
-}
 
 .background-video {
     position: relative;
@@ -25,10 +11,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw; /* Use "vw" (viewport width) instead of "%" */
     height: 100%;
     object-fit: cover; /* Scale the video to cover the entire section */
 }
+
+
 
 .content-overlay {
     position: absolute;
@@ -41,7 +29,7 @@
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 3em;
     margin: 0;
 }
 

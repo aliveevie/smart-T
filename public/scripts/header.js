@@ -7,7 +7,7 @@ class Header extends HTMLElement{
         this.innerHTML = `
         <header class="header" >
         <div class="logo" >
-            <img  src="" alt="Smart Assessor logo" />
+            <img  src="./icons/logo.png" alt="Smart Assessor logo" />
         </div>
         <nav>
             <ul>

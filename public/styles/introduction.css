@@ -1,0 +1,41 @@
+.introduction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.intr-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.intr-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.text {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}

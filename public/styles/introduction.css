@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 100px 100px;
 }
 
 .intr-image {
@@ -22,12 +23,16 @@
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 2em;
+    color: white;
 }
 
 p {
-    font-size: 16px;
-    margin: 10px 0;
+    font-size: 20px;
+    margin: 50px 0;
+    line-height: 30px;
+    color: white;
+
 }
 
 button {
@@ -38,4 +43,24 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .introduction {
+        display: block;
+    }
+
+    .intr-image {
+        text-align: center;
+    }
+
+    .intr-image img {
+        width: 200%; /* Adjust the width as needed */
+        height: auto;
+    }
+
+    .text {
+        text-align: center;
+    }
 }

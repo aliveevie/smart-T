@@ -1,11 +1,14 @@
 
 /* Base styles for your header */
+body{
+    background-color: #333;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-   
 }
 
 .logo img {
@@ -40,11 +43,9 @@ nav ul button{
     cursor: pointer;
     width: 100%;
     text-align: center;
-
 }
 
 .buttons{
-
     color: #fff;
     border: none;
     padding: 10px;

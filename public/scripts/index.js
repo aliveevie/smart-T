@@ -17,8 +17,6 @@ const call_attance = document.getElementById('call-student');
 const show_attandance = document.getElementById('show-attandance');
 
 
-
-
 function getUpdateForm(){
     updateForm.style.display = 'block'
 }

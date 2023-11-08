@@ -221,8 +221,3 @@ footer {
     }
 }
 
-@media print{
-    header{
-        display: none;
-    }
-}

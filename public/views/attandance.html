@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/dashboard.css">
     <link  rel="stylesheet" href="../styles/student.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <title>Teacher Dashboard</title>
 </head>
 <body>
-    <header>
-        <h1> <span id="teacher-name" ></span>Attandance Information</h1>
+    <header class="header">
+        <h1><span id="school-name">School Information</span></h1>
+        <div class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </div>
     </header>
+    
+
     <main>
         <section class="school-head">
             <div class="head" >
@@ -61,12 +68,12 @@
                 <button onclick="handleAttanceCall()"  class="buttons" >Search Student</button>
             </h3>
         </section>
-
+    
         <section class="report-sheet" id="show-attandance">
             <div class="header">
                 <h1 id="studentName">StudentName Attandance Details</h1>
             </div>
-            <div class="attandance-buttons" >
+            <div class="attandance-buttons">
                 <button class="buttons" >Present</button>
                 <button class="buttons" >Absent</button>
             </div>

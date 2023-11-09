@@ -1,0 +1,49 @@
+.how-it-works {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.how-it-works h2 {
+    font-size: 28px;
+    color: #3498db;
+}
+
+.infographic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.step {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+}
+
+.step img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.step p {
+    font-size: 16px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+}

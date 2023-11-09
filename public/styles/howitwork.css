@@ -21,9 +21,9 @@
     text-align: center;
 }
 
-.step img {
-    width: 100px;
-    height: 100px;
+.step i {
+    font-size: 3rem;
+    color: #3498db; /* Icon color */
     margin-bottom: 20px;
 }
 
@@ -46,4 +46,10 @@
     font-size: 18px;
     border-radius: 5px;
     margin-top: 20px;
+}
+
+@media screen and (max-width:800px) {
+    .how-it-works{
+        display: block;
+    }
 }

@@ -16,5 +16,5 @@ container.addEventListener('mousemove', (e) => {
     const rotation = angle * (180 / Math.PI);
 
     // Apply rotation to the cursor
-    cursor.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+    cursor.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`
 });

@@ -10,9 +10,9 @@ document.addEventListener('submit', (e) => {
 
 function handleClick(){
 
-        const code = document.getElementById('verificationCode')
-       
-        if(code.value === token){
+        const code = document.getElementById('verificationCode').value
+       console.log(code)
+        if(code == token){
             window.location.href = './dashboard.html'
         }else{
             const invalid = document.getElementById('invalid');

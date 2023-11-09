@@ -1,0 +1,27 @@
+/* Styling for the contact section */
+.contact-section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 28px;
+    color: #3498db;
+}
+
+.contact-icons {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Display icons on the same line */
+    justify-content: center; /* Center-align icons horizontally */
+}
+
+.contact-icons li {
+    font-size: 24px; /* Icon size */
+    margin: 0 10px; /* Add spacing between icons */
+}
+
+.contact-icons a {
+    text-decoration: none;
+    color: #3498db; /* Link color */
+}

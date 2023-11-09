@@ -9,7 +9,10 @@ document.addEventListener('submit', (e) => {
 });
 
 function handleClick(){
-        if(token===9807){
+
+        const code = document.getElementById('verificationCode')
+       
+        if(code.value === token){
             window.location.href = './dashboard.html'
         }else{
             const invalid = document.getElementById('invalid');

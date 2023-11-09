@@ -22,3 +22,5 @@ verificationForm.addEventListener("submit", function (event) {
     closeModal();
     // Here, you can add your logic to process the verification code and continue the registration process.
 });
+
+console.log('Hello');

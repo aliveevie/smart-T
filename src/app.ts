@@ -4,7 +4,9 @@ const app = express();
 const path = require('path');
 const port = 3000;
 const db = require('./db');
+const bodyparser = require('body-parser');
 
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/', (req:Request, res:Response) => {
@@ -12,6 +14,9 @@ app.get('/', (req:Request, res:Response) => {
   });
 
 
+app.post('/api/schools', (req:Request, res:Response) => {
+    console.log(req.body);
+});
   
 
 app.listen(port, () => {

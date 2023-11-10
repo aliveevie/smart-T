@@ -4,12 +4,10 @@ const token = 9807;
 
 function handleSubmit(){
     document.addEventListener('submit', async (e) => {
-        e.preventDefault();
-    
+      //  e.preventDefault();
         const modalWindow = document.getElementById('modal-window');
         modalWindow.style.display = 'block';
         document.body.style.overflowY = 'hidden';
-    
     });
 }
 

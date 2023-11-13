@@ -5,7 +5,7 @@ const path = require('path');
 const port = 3000;
 const db = require('./db');
 const bodyparser = require('body-parser');
-const token = require('./mail');
+// const token = require('./mail');
 
 
 app.use(bodyparser.urlencoded({ extended: true }));

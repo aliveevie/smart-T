@@ -1,4 +1,3 @@
-import { Response, Request } from "express";
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -11,12 +10,12 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/', (req:Request, res:Response) => {
+app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
   });
 
 
-app.post('/api/schools', (req:Request, res:Response) => {
+app.post('/api/schools', (req, res) => {
     console.log(req.body);
 });
   

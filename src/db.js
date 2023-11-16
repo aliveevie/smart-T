@@ -9,7 +9,7 @@ const pool = new Pool({
 });
 
 // Example query
-pool.query('SELECT NOW()', (err:Error, result:any) => {
+pool.query('SELECT NOW()', (err, result) => {
   if (err) {
     return console.error('Error executing query', err.stack);
   }

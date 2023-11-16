@@ -2,8 +2,6 @@
 node_modules
 build
 Data.json
-mail.js
 token.js
 token.json
-gmail.js
 sendMail.js

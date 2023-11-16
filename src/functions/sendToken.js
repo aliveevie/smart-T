@@ -3,7 +3,7 @@ const path = require('path');
 const sendMail = require('./gmail');
 const token = require('./generateToken');
 
-const main = async (receiver, schoolName) => {
+const main = async (receiver, schoolName, token) => {
    
     const options = {
         from: 'info@smartgrader.co',
@@ -29,12 +29,7 @@ const main = async (receiver, schoolName) => {
   return messageId;
 };
 
-const schoolName = 'GDSS Shuwarin'
-const receiver = 'ibrahimabdulkarim193@gmail.com'
 
-main(receiver, schoolName)
-  .then((messageId) => console.log('Message sent successfully:'));
-
-
+module.exports = main;
 
   

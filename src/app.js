@@ -17,16 +17,29 @@ app.get('/', (req, res) => {
   });
 
 
-app.post('/api/schools', (req, res) => {
-    const { schoolName, email } = req.body;
-    sendToken(email, schoolName, code)
-    .then(() => console.log('Message Send Successifully!'))
+app.post('/api/schools', async (req, res) => {
+    const { schoolName, adminName, contact, email, phone, address, password } = req.body;
     
+    const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
+    
+    if(result.rows.length===0){
+        db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
+        [code, schoolName, adminName, contact, email, phone, address, password])
+        .then(() => {
+            res.json({ code: code });
+            return;
+        })
+    }
+
+    // sendToken(email, schoolName, code);
+  //  .then(() => console.log('Message Send Successifully!'));
+
+
 });
 
 app.get('/api/token', (req, res) => {
     res.json({ code: code });
-})
+});
   
 
 app.listen(port, () => {

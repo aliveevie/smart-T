@@ -14,7 +14,7 @@ pool.query('SELECT NOW()', (err, result) => {
     return console.error('Error executing query', err.stack);
   }
   console.log('Connected to PostgreSQL database. Current timestamp:', result.rows[0].now);
-  pool.end(); // Close the connection pool
+
 });
 
 module.exports = pool;

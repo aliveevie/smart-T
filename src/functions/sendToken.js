@@ -3,7 +3,7 @@ const path = require('path');
 const sendMail = require('./gmail');
 const token = require('./generateToken');
 
-const main = async (receiver, schoolName, token) => {
+const main = async (receiver, schoolName, code) => {
    
     const options = {
         from: 'info@smartgrader.co',
@@ -11,10 +11,10 @@ const main = async (receiver, schoolName, token) => {
         cc: 'ibrahim@ibadulkarim.co, info@smartgrader.co, iabdulkarim472@gmail.com',
         replyTo: 'aliveevie@gmail.com',
         subject: 'Complete Your Sign Up For the Smart Grading System',
-        text: `Hello ${schoolName}!\n\nThis is your token code: ${token()}\n\nUse this code to complete your registration.`,
+        text: `Hello ${schoolName}!\n\nThis is your token code: ${code}\n\nUse this code to complete your registration.`,
         html: `
           <p>Hello ${schoolName}!</p>
-          <p>Your token code for registration is: <strong>${token()}</strong></p>
+          <p>Your token code for registration is: <strong>${code}</strong></p>
           <p>Use this code to complete your registration on the Smart Grading System.</p>
         `,
         textEncoding: 'base64',

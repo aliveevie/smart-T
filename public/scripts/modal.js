@@ -1,5 +1,5 @@
-// Get references to the modal and registration button
-const token = 9807;
+// Get references to the modal and registration button;
+
 
 
 function handleSubmit(){
@@ -11,10 +11,12 @@ function handleSubmit(){
     });
 }
 
-
-function handleClick(){
+async function handleClick(){
         const code = document.getElementById('verificationCode').value
-        if(code == token){
+        const token = fetch('/api/token').then(response => response.json());
+        const data = await token;
+        
+        if(code == data.code){
             window.location.href = './dashboard.html'
         }else{
             const invalid = document.getElementById('invalid');

@@ -117,4 +117,5 @@ function handleResultCalculation() {
 
 }
 
+
 document.addEventListener('submit', hideDetails);

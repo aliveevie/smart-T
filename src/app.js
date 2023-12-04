@@ -26,11 +26,12 @@ app.post('/api/schools', async (req, res) => {
         db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
         [code, schoolName, adminName, contact, email, phone, address, password])
         .then(() => {
-          //  sendToken(email, schoolName, code)
-         //   .then(() => console.log('Message Send Successifully!'));
+          sendToken(email, schoolName, code)
+         .then(() => console.log('Message Send Successifully!'));
         });
     }else{
         res.sendFile(path.resolve(__dirname, '../public/views', 'already.html'));
+        return;
     }
 });
 

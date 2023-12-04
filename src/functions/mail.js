@@ -1,5 +1,5 @@
 const { google } = require('googleapis');
-const credentials = require('./Data.json');
+
 require('dotenv').config();
 
 const redirect_uris  = process.env.REDIRECT_URIS;

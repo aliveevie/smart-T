@@ -10,6 +10,7 @@ const code = token();
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(bodyparser.json());
 
 app.get('/', (req, res) => {
 
@@ -17,23 +18,42 @@ app.get('/', (req, res) => {
   });
 
 
-app.post('/api/schools', async (req, res) => {
+app.post('/api/schools/register', async (req, res) => {
     const { schoolName, adminName, contact, email, phone, address, password } = req.body;
-    
+  
     const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
+        console.log(result.rows)
+        console.log(req.body)
     
-    if(result.rows.length===0){
-        db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
-        [code, schoolName, adminName, contact, email, phone, address, password])
-        .then(() => {
-          sendToken(email, schoolName, code)
-         .then(() => console.log('Message Send Successifully!'));
-        });
+    if(result.rows.length==0){
+       db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
+        [code, schoolName, adminName, contact, phone, email, address, password])
+         .then(() => {
+        sendToken(email, schoolName, code)
+       .then(() => res.json({ Error: 'Success' }));
+       });
     }else{
-        res.sendFile(path.resolve(__dirname, '../public/views', 'already.html'));
+        res.json({ Error: 'Registered' })
         return;
-    }
+}
+
+
 });
+
+
+app.post('/api/schools/login', async (req, res) => {
+    const { email, password } = req.body;
+    
+    const result = await db.query('SELECT email_address, password FROM schools_info WHERE email_address=$1 AND PASSWORD=$2', 
+    [email, password]);
+
+    if(email===result.rows[0].email_address && password===result.rows[0].password){
+        res.sendFile(path.join(__dirname, '../public/views', 'dashboard.html'))
+    }
+
+})
+
+
 
 app.get('/api/token', (req, res) => {
     res.json({ code: code });

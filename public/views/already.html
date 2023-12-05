@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="../styles/index.css"  rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link href="../styles/registration.css" rel="stylesheet"  />
+  <script src="../scripts/modal.js" ></script>  
+    <title>Assessor</title>
+</head>
+<body>
+    <section class="already">
+        <div class="already-content">
+            <h2>This User or School are Already Registered</h2>
+            <p>To continue with the registration process, please enter the verification code sent to your email.</p>
+            <p>Or Login In <a href="./login.html">Here</a></p>
+            <form action="" method="post">
+                <label for="verification-code">Verification Code:</label>
+                <input type="text" name="verification-code" id="verificationCode" required>
+            </form>
+            <input type="submit" value="Submit" onclick="handleClick()" >
+            <p id="invalid" >Invalid token</p>
+        </div>
+    </section>
+</body>
+</html>

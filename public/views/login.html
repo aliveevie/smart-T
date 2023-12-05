@@ -15,15 +15,15 @@
         <h3>Login Here</h3>
         <div class="box-try">
             <p>Login to your School Dashboard</p>
-            <form action="" method="post">
+            <form action="/api/schools/login" method="post">
                 <label for="email" >Email Address</label>
-                <input type="email" id="email" placeholder="Enter your school email address"/>
-                <label for="password" >Password</label>
-                <input type="password" id="password" placeholder="Enter your school password" />
+                <input type="email" id="email" name="email" placeholder="Enter your school email address"/>
+                <label for="password"   >Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your school password" />
                 <input type="submit" value="Submit" />
             </form>
             <label for="registered0" >Not Registered</label>
-            <a href="/" ><button class="buttons" >Register</button></a>
+            <a href="./register.html" >Register</a>
         </div>
     </div>
 </body>

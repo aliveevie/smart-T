@@ -9,14 +9,14 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
   <link href="../styles/registration.css" rel="stylesheet"  />
-  <script src="../scripts/modal.js" ></script>
+  <script src="../scripts/modal.js" ></script>  
     <title>Assessor</title>
 </head>
 <body>
     <div class="registration" id="registration">
         <h3>Register Your School</h3>
         <div class="registration-box">
-            <form action="/api/schools" method="post">
+            <form action="/api/schools/register" method="post">
                 <label for="schoolName">School Name</label>
                 <input type="text" id="schoolName" name="schoolName" placeholder="Enter the name of your school" required>
     
@@ -40,13 +40,14 @@
     
                 <input type="submit" value="Submit"  onclick="handleSubmit()">
             </form>
-            <p>Already Registered? <a href="/">Login</a></p>
+            <p id="error"></p>
+            <p>Already Registered? <a href="./login.html">Login</a></p>
         </div>
     </div>
 
     <section class="modal-window" id="modal-window">
         <div class="modal-content">
-            <h2>This User or School are Already Registered</h2>
+            <h2>Enter Token to Continue</h2>
             <p>To continue with the registration process, please enter the verification code sent to your email.</p>
             <p>Or Login In <a href="./login.html">Here</a> Please </p>
             <form action="" method="post">

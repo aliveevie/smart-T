@@ -8,6 +8,7 @@ const token = require('./functions/generateToken');
 const sendToken = require('./functions/sendToken');
 const code = token();
 
+
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyparser.json());
@@ -21,12 +22,14 @@ app.get('/', (req, res) => {
 app.post('/api/schools/register', async (req, res) => {
     const { schoolName, adminName, contact, email, phone, address, password } = req.body;
   
+  //  const hashedPassword = await bcrypt.hash(password, 10);
+
+
     const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
       
-
     if(result.rows.length==0){
        db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
-        [code, schoolName, adminName, contact, phone, email, address, password])
+        [code, schoolName, adminName, contact, phone, email, address, hashedPassword])
          .then(() => {
         sendToken(email, schoolName, code)
        .then(() => res.json({ Error: 'Success' }));

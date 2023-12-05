@@ -23,9 +23,10 @@ function handleSubmit() {
 
         const responseData = await response.json();
 
-        console.log(responseData);
         if(responseData.Error=='Success'){
-            console.log('Response Data!')
+                    // Get the current page URL
+            window.location.href = '../views/dashboard.html';
+
       }else{
             document.getElementById('error').innerText = responseData.Error;
       }

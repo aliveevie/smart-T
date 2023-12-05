@@ -17,6 +17,7 @@
 
 
     <script src="./scripts/header.js"  ></script>
+  
 
     <title>Assessor</title>
 
@@ -113,19 +114,22 @@
         </div>
   
     </section>
+
+    <script src="./scripts/login.js" ></script>
     
     <section class="login" id="login"   >
         <div class="try" id="try">
             <button class="cta-button"   data-aos="fade-up">Try It Now</button>
             <div class="box-try">
                 <p   data-aos="fade-down">Login to your School Dashboard</p>
-                <form action="" method="post"  data-aos="zoom-out">
+                <form action="/api/schools/login" method="post"  data-aos="zoom-out">
                     <label for="email" >Email Address</label>
-                    <input type="email" id="email" placeholder="Enter your school email address"/>
-                    <label for="password" >Password</label>
-                    <input type="password" id="password" placeholder="Enter your school password" />
-                    <input type="submit" value="Submit" />
+                    <input type="email" id="email" name="email" placeholder="Enter your school email address"/>
+                    <label for="password"   >Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your school password" />
+                    <input type="submit" value="Submit" onclick="handleSubmit()" />
                 </form>
+                <p id="error" ></p>
                 <label for="registered" >Not Registered</label>
                 <a href="./views/register.html" ><button class="buttons" >Register</button></a>
             </div>

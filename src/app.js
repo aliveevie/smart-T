@@ -22,9 +22,8 @@ app.post('/api/schools/register', async (req, res) => {
     const { schoolName, adminName, contact, email, phone, address, password } = req.body;
   
     const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
-        console.log(result.rows)
-        console.log(req.body)
-    
+      
+
     if(result.rows.length==0){
        db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
         [code, schoolName, adminName, contact, phone, email, address, password])
@@ -44,15 +43,24 @@ app.post('/api/schools/register', async (req, res) => {
 app.post('/api/schools/login', async (req, res) => {
     const { email, password } = req.body;
     
-    const result = await db.query('SELECT email_address, password FROM schools_info WHERE email_address=$1 AND PASSWORD=$2', 
+    
+    const result = await db.query('SELECT email_address, password FROM schools_info WHERE email_address=$1 AND password=$2', 
     [email, password]);
 
-    if(email===result.rows[0].email_address && password===result.rows[0].password){
-        res.sendFile(path.join(__dirname, '../public/views', 'dashboard.html'))
+
+    if(result.rows.length==0){
+        res.json({ Error: 'Invalid Username or Password'});
+        return;
+    }else{
+        if((result.rows[0].password==password)  && result.rows[0].email_address==email){
+            res.json({ Error: 'Success' });
+            return
+        }else{
+            res.json({ Error: 'Invalid Username or Password'});
+            return;
+        }
     }
-
 })
-
 
 
 app.get('/api/token', (req, res) => {

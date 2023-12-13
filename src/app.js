@@ -31,7 +31,7 @@ app.post('/api/schools/register', async (req, res) => {
     if(result.rows.length==0){
        db.query( 'INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING tokens, school_name, administrator, contact_name, phone_number, email_address, school_address', 
         [code, schoolName, adminName, contact, phone, email, address, password])
-         .then((data) => console.log(data) )
+         .then((data) => res.json(data.rows[0]))
          //sendToken(email, schoolName, code)
 
     }else{

@@ -6,7 +6,8 @@ const updateSchoolData = data => {
   schooldata = data;
 };
 
-const handleSubmit = async () => {
+const handleSubmit = async (e) => {
+  e.preventDefault();
   
   const schoolName = document.getElementById('schoolName').value;
   const adminName = document.getElementById('adminName').value;
@@ -34,15 +35,18 @@ const handleSubmit = async () => {
     });
 
     const responseData = await response.json();
-    updateSchoolData(fetchSchoolId(responseData));
-
+   
+    schooldata = await fetchSchoolId(responseData);
+    
     if (response.ok) {
       // Handle success, e.g., show a success message
       if (responseData.Error == 'Registered') {
         document.getElementById('error').innerText = 'School Already Registered!';
       } else {
         // Redirect to dashboard or handle as needed
-        window.location.href = '../views/dashboard.html';
+        if(schooldata){
+          window.location.href = '../views/dashboard.html';
+        }
       }
     } else {
       // Handle error, e.g., show an error message
@@ -67,16 +71,20 @@ const handleClick = async () => {
 };
 
 document.addEventListener('submit', handleSubmit);
-const getSchoolData = () => {
+
+const getSchoolData = async () => {
   return new Promise(resolve => {
     // Use setInterval to check if schooldata is defined every 100 milliseconds
     const intervalId = setInterval(() => {
       if (schooldata !== undefined) {
         clearInterval(intervalId);
-        resolve(schooldata);
+        console.log(schooldata);
+        resolve(schooldata)
       }
     }, 100);
   });
 };
+
+getSchoolData();
 
 export default getSchoolData;

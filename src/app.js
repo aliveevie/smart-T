@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 3000;
-const db = require('./db');
+const db = require('./db')
 const bodyparser = require('body-parser');
 const token = require('./functions/generateToken');
 const sendToken = require('./functions/sendToken');
@@ -29,17 +29,15 @@ app.post('/api/schools/register', async (req, res) => {
     const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
       
     if(result.rows.length==0){
-       db.query('INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', 
+       db.query( 'INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING tokens, school_name, administrator, contact_name, phone_number, email_address, school_address', 
         [code, schoolName, adminName, contact, phone, email, address, password])
-         .then(() => {
-        //sendToken(email, schoolName, code)
-        res.json({ Error: 'Success' })
-       });
+         .then((data) => console.log(data) )
+         //sendToken(email, schoolName, code)
+
     }else{
         res.json({ Error: 'Registered' })
         return;
-}
-
+};
 
 });
 

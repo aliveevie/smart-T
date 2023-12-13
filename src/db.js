@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 // Replace the connection string with your actual PostgreSQL connection string
-const connectionString = process.env.CONNECTION1;
+const connectionString = process.env.CONNECTION2;
 
 const pool = new Pool({
   connectionString: connectionString,

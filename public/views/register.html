@@ -9,7 +9,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
   <link href="../styles/registration.css" rel="stylesheet"  />
-  <script src="../scripts/modal.js" ></script>  
+ 
     <title>Assessor</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Create a password" required>
     
-                <input type="submit" value="Submit"  onclick="handleSubmit()">
+                <input type="submit" value="Submit">
             </form>
             <p id="error"></p>
             <p>Already Registered? <a href="./login.html">Login</a></p>
@@ -58,5 +58,7 @@
             <p id="invalid" >Invalid token</p>
         </div>
     </section>
+    <script  type="module" src="../scripts/modal.js"  ></script>
+    <script  type="module" src="../scripts//newModal.js"  ></script>
 </body>
 </html>

@@ -1,7 +1,12 @@
+// Import the getSchoolData function
 import getSchoolData from "./modal.js";
 
-(async () => {
-    const data = await getSchoolData();
-    // Now you can use the data
+// Example: Using .then() for handling promises
+getSchoolData()
+  .then(data => {
     console.log(data);
-})();
+    // Now you can use the data here
+  })
+  .catch(error => {
+    console.error('Error fetching school data:', error);
+  });

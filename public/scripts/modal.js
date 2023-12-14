@@ -1,90 +1,101 @@
-let schooldata;
+class SchoolRegistration {
+  constructor() {
+    this.schooldata = null;
+    this.init();
+  }
 
-const fetchSchoolId = data => data;
+  fetchSchoolId(data) {
+    // Assuming this function remains unchanged
+    return data;
+  }
 
-const updateSchoolData = data => {
-  schooldata = data;
-};
+  updateSchoolData(data) {
+    this.schooldata = data;
+  }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+
+
   
-  const schoolName = document.getElementById('schoolName').value;
-  const adminName = document.getElementById('adminName').value;
-  const contact = document.getElementById('contact').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const address = document.getElementById('address').value;
-  const password = document.getElementById('password').value;
 
-  try {
-    const response = await fetch('/api/schools/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        schoolName,
-        adminName,
-        contact,
-        email,
-        phone,
-        address,
-        password,
-      }),
-    });
+  async handleSubmit(e) {
+    e.preventDefault();
 
-    const responseData = await response.json();
-   
-    schooldata = await fetchSchoolId(responseData);
-    
-    if (response.ok) {
-      // Handle success, e.g., show a success message
-      if (responseData.Error == 'Registered') {
-        document.getElementById('error').innerText = 'School Already Registered!';
-      } else {
-        // Redirect to dashboard or handle as needed
-        if(schooldata){
-          window.location.href = '../views/dashboard.html';
+    const schoolName = document.getElementById('schoolName').value;
+    const adminName = document.getElementById('adminName').value;
+    const contact = document.getElementById('contact').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('/api/schools/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          schoolName,
+          adminName,
+          contact,
+          email,
+          phone,
+          address,
+          password,
+        }),
+      });
+
+      const responseData = await response.json();
+      this.schooldata = this.fetchSchoolId(responseData);
+
+      if (response.ok) {
+        if (responseData.Error === 'Registered') {
+          document.getElementById('error').innerText = 'School Already Registered!';
+        } else {
+          if (this.schooldata) {
+         window.location.href = '../views/dashboard.html';
+            
+          }
         }
+      } else {
+        console.error('Registration failed');
       }
-    } else {
-      // Handle error, e.g., show an error message
-      console.error('Registration failed');
+    } catch (error) {
+      console.error('Error during registration:', error);
     }
-  } catch (error) {
-    console.error('Error during registration:', error);
+    this.getSchoolName()
+    this.getEmail()
   }
-};
 
-const handleClick = async () => {
-  const code = document.getElementById('verificationCode').value;
-  const token = fetch('/api/token').then(response => response.json());
-  const data = await token;
-
-  if (code == data.code) {
-    window.location.href = './dashboard.html';
-  } else {
-    const invalid = document.getElementById('invalid');
-    invalid.style.display = 'block';
+  handleClick() {
+    const code = document.getElementById('verificationCode').value;
+    fetch('/api/token')
+      .then(response => response.json())
+      .then(data => {
+        if (code === data.code) {
+          window.location.href = './dashboard.html';
+        } else {
+          const invalid = document.getElementById('invalid');
+          invalid.style.display = 'block';
+        }
+      });
   }
-};
 
-document.addEventListener('submit', handleSubmit);
+  getEmail() {
+    const emailElement = document.getElementById('email');
+    return emailElement ? emailElement.value : null;
+  }
 
-const getSchoolData = async () => {
-  return new Promise(resolve => {
-    // Use setInterval to check if schooldata is defined every 100 milliseconds
-    const intervalId = setInterval(() => {
-      if (schooldata !== undefined) {
-        clearInterval(intervalId);
-        console.log(schooldata);
-        resolve(schooldata)
-      }
-    }, 100);
-  });
-};
+  getSchoolName() {
+    const schoolNameElement = document.getElementById('schoolName');
+    return schoolNameElement ? schoolNameElement.value : null;
+  }
+    
 
-getSchoolData();
+  init() {
+      document.addEventListener('submit', this.handleSubmit.bind(this));
+  }
+}
 
-export default getSchoolData;
+
+const schoolRegistration = new SchoolRegistration();

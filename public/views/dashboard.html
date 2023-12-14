@@ -8,49 +8,47 @@
     <title>School Dashboard</title>
 </head>
 <body>
-   
-    <header class="header-back" >
-        <h1  id="school-name" ></h1>
-        <div class="back-button" >
-            <i class="fas fas-back" >Back</i>
-        </div>
-    </header>
+    <script  src="../scripts/modal.js" ></script>
     <main>
-        <section class="school-head" >
-            <div class="head" >
-                <h3>School Director/Principal/Admin</h3>
-                <p id="principal" >Principal</p>
-                <p id="phone" >070 000 0000</p>
+        <header class="header-back" >
+            <h1  id="school-name" ></h1>
+            <div class="back-button" >
+               <i class="fas fas-back" >Back</i>
             </div>
-        </section>
-        <section class="school-statistics">
-            <h2>School Statistics</h2>
-            <div class="school-info" >
-                <div class="total-teachers" >
-                    <h3>Total Teachers</h3>
-                    <p id="totalteachers" >0</p>
-                </div>
-                <div class="total-teachers" >
-                    <h3>Total Students</h3>
-                    <p id="totalteachers" >0</p>
-                </div>
-                <div class="total-teachers" >
-                    <h3>Total Classes</h3>
-                    <p id="totalteachers" >0</p>
-                </div>
-            </div>
-            <div class="button-stat" >
-                <button class="buttons" onclick="getUpdateForm()" >Update School Information</button>
-            </div>
+      </header>
+  
+      <section class="school-head" >
+      <div class="head" >
+          <h3>School Director/Principal/Admin</h3>
+          <p id="principal" >Principal</p>
+          <p id="phone" >070 000 0000</p>
+      </div>
+  </section>
+  <section class="school-statistics">
+      <h2>School Statistics</h2>
+      <div class="school-info" >
+          <div class="total-teachers" >
+              <h3>Total Teachers</h3>
+              <p id="totalteachers" >0</p>
+          </div>
+          <div class="total-teachers" >
+              <h3>Total Students</h3>
+              <p id="totalteachers" >0</p>
+          </div>
+          <div class="total-teachers" >
+              <h3>Total Classes</h3>
+              <p id="totalteachers" >0</p>
+          </div>
+      </div>
+      <div class="button-stat" >
+          <button class="buttons" onclick="getUpdateForm()" >Update School Information</button>
+      </div>
+  
+  </section>
        
-        </section>
         <section class="school-details" id="showUpdateForm" >
             <h2>Update School Details</h2>
             <form id="schoolDetailsForm"  method="post" action="/updateForm">
-                <div class="form-group">
-                    <label for="schoolName">School Name:</label>
-                    <input type="text" id="schoolName" name="schoolName">
-                </div>
                 <div class="form-group">
                     <label for="numTeachers">Number of Teachers:</label>
                     <input type="number" id="numTeachers" name="numTeachers" min="0">
@@ -125,9 +123,7 @@
         <p>&copy; Design by Ibrahim Abdulkarim</p>
     </footer>
 
-    <script  src="../scripts/modal.js" ></script>
-
-    <script src="../scripts/index.js" >
-    </script>
+    <script src="../scripts/index.js" ></script>
+    <script src="../scripts/dashboard.js"></script>
 </body>
 </html>

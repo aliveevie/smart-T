@@ -1,17 +1,29 @@
-// dashboard.js
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // Fetch data from the API endpoint
-  try {
-    const response = await fetch('/api/schools/register');
-    if (response.ok) {
-      const data = await response.json();
-      console.log('Data from API:', data);
-      // Now you can use the data as needed in your dashboard logic
-    } else {
-      console.error('Failed to fetch data from API');
-    }
-  } catch (error) {
-    console.error('Error during API fetch:', error);
-  }
-});
+  // Get the current URL
+  let params = new URLSearchParams(document.location.search);
+  let school_id = params.get("school_id");
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Assuming school_id is defined before this point
+    const url = `/api/schools/update?school_id=${school_id}`;
+  
+    const response = fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  
+    // You might want to handle the response, for example:
+    response.then((res) => {
+      if (res.ok) {
+        console.log('Request was successful');
+      } else {
+        console.error('Request failed');
+      }
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  });
+  
+

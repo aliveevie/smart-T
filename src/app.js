@@ -70,7 +70,47 @@ app.post('/api/schools/login', async (req, res) => {
 app.get('/api/token', (req, res) => {
     res.json({ code: code });
 });
+
+app.get('/api/schools/update', async (req, res) => {
+    const { school_id } = req.query;
+
+    const result = await db.query(`
+    SELECT
+      schools_info.school_name,
+      update_school_info.number_of_teachers,
+      update_school_info.number_of_students,
+      update_school_info.number_of_classes
+    FROM
+      schools_info
+    JOIN
+      update_school_info ON schools_info.school_id = update_school_info.school_id
+    WHERE
+      schools_info.school_id = $1
+  `, [school_id]);
   
+    if(result.rows.length==0){
+      await db.query('INSERT INTO update_school_info(school_id) VALUES($1)', 
+      [school_id])
+      .then(() => {
+            db.query(`SELECT
+            schools_info.school_name,
+            update_school_info.number_of_teachers,
+            update_school_info.number_of_students,
+            update_school_info.number_of_classes
+          FROM
+            schools_info
+          JOIN
+            update_school_info ON schools_info.school_id = update_school_info.school_id
+          WHERE
+            schools_info.school_id = $1
+            `, [school_id])
+      })
+      .then((data) => res.json(data.rows[0]));
+    }else{
+        res.json(result.rows[0]);
+    }
+
+});
 
 
 app.listen(port, () => {

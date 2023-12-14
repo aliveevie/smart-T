@@ -1,12 +1,21 @@
-function getSchoolData(schoolData){
-    return schoolData;
-}
 
-async function schoolDataUpdated(){
-  return  await schoolData;
-}
 
-let schoolData;
+
+
+let schoolData = [];
+
+function waitAndLogSchoolData() {
+  return new Promise((resolve) => {
+    const intervalId = setInterval(() => {
+      if (schoolData.length > 0) {
+        clearInterval(intervalId);
+        resolve();
+      }
+    }, 100); // Adjust the interval based on your requirements
+  });
+};
+
+
 
 function handleSubmit() {
   
@@ -38,19 +47,24 @@ function handleSubmit() {
       });
   
       const responseData = await response.json();
-      
-      schoolData = getSchoolData(responseData);
 
-      schoolDataUpdated();
+      schoolData.push({
+        name: responseData.administrator,
+        email: responseData.email_address,
+        phone: responseData.phone_number,
+        school_id: responseData.school_id
+      });
 
+     // console.log(schoolData)
+
+     
       if (response.ok) {
         // Handle success, e.g., show a success message
         if (responseData.Error == 'Registered') {
           document.getElementById('error').innerText = 'School Already Registered!';
         } else {
           // Redirect to dashboard or handle as needed
-          window.location.href = '../views/dashboard.html';
-          document.getElementById('school-name').innerText = 'The Ibx School!';
+          window.location.href = `../views/dashboard.html?school_id=${responseData.school_id}`;
         }
       } else {
         // Handle error, e.g., show an error message
@@ -61,7 +75,6 @@ function handleSubmit() {
     }
   })
 
-  
 }
 
 async function handleClick() {
@@ -76,6 +89,80 @@ async function handleClick() {
     invalid.style.display = 'block';
   }
 }
+
+
+
+// ...
+/*
+*
+function waitAndLogSchoolData() {
+  return new Promise((resolve) => {
+    const intervalId = setInterval(() => {
+      if (schoolData.length > 0) {
+        clearInterval(intervalId);
+        resolve();
+     
+        window.location.href = '../views/dashboard.html'.then(() => {
+        document.getElementById('school-name').innerText = 'IBX Digital Schools!'
+        });
+      }
+    }, 100); // Adjust the interval based on your requirements
+  });
+};
+
+waitAndLogSchoolData()
+*
+*/
+
+
+class Dashboard extends HTMLElement{
+    constructor(){
+      super();
+    };
+
+    connectedCallback(){
+      this.innerHTML = `
+    <header class="header-back" >
+          <h1  id="school-name" ></h1>
+          <div class="back-button" >
+             <i class="fas fas-back" >Back</i>
+          </div>
+    </header>
+
+    <section class="school-head" >
+    <div class="head" >
+        <h3>School Director/Principal/Admin</h3>
+        <p id="principal" >Principal</p>
+        <p id="phone" >070 000 0000</p>
+    </div>
+</section>
+<section class="school-statistics">
+    <h2>School Statistics</h2>
+    <div class="school-info" >
+        <div class="total-teachers" >
+            <h3>Total Teachers</h3>
+            <p id="totalteachers" >0</p>
+        </div>
+        <div class="total-teachers" >
+            <h3>Total Students</h3>
+            <p id="totalteachers" >0</p>
+        </div>
+        <div class="total-teachers" >
+            <h3>Total Classes</h3>
+            <p id="totalteachers" >0</p>
+        </div>
+    </div>
+    <div class="button-stat" >
+        <button class="buttons" onclick="getUpdateForm()" >Update School Information</button>
+    </div>
+
+</section>
+      `
+    }  
+}
+
+
+customElements.define('dashboard-element', Dashboard);
 
 
 

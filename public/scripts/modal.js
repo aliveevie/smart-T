@@ -1,33 +1,25 @@
-class SchoolRegistration {
-  constructor() {
-    this.schooldata = null;
-    this.init();
-  }
+function getSchoolData(schoolData){
+    return schoolData;
+}
 
-  fetchSchoolId(data) {
-    // Assuming this function remains unchanged
-    return data;
-  }
+async function schoolDataUpdated(){
+  return  await schoolData;
+}
 
-  updateSchoolData(data) {
-    this.schooldata = data;
-  }
+let schoolData;
 
-
-
+function handleSubmit() {
   
-
-  async handleSubmit(e) {
-    e.preventDefault();
-
-    const schoolName = document.getElementById('schoolName').value;
-    const adminName = document.getElementById('adminName').value;
-    const contact = document.getElementById('contact').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const password = document.getElementById('password').value;
-
+  document.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const schoolName = document.getElementById('schoolName').value;
+        const adminName = document.getElementById('adminName').value;
+        const contact = document.getElementById('contact').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const password = document.getElementById('password').value;
+      
     try {
       const response = await fetch('/api/schools/register', {
         method: 'POST',
@@ -44,58 +36,51 @@ class SchoolRegistration {
           password,
         }),
       });
-
+  
       const responseData = await response.json();
-      this.schooldata = this.fetchSchoolId(responseData);
+      
+      schoolData = getSchoolData(responseData);
+
+      schoolDataUpdated();
 
       if (response.ok) {
-        if (responseData.Error === 'Registered') {
+        // Handle success, e.g., show a success message
+        if (responseData.Error == 'Registered') {
           document.getElementById('error').innerText = 'School Already Registered!';
         } else {
-          if (this.schooldata) {
-         window.location.href = '../views/dashboard.html';
-            
-          }
+          // Redirect to dashboard or handle as needed
+          window.location.href = '../views/dashboard.html';
+          document.getElementById('school-name').innerText = 'The Ibx School!';
         }
       } else {
+        // Handle error, e.g., show an error message
         console.error('Registration failed');
       }
     } catch (error) {
       console.error('Error during registration:', error);
     }
-    this.getSchoolName()
-    this.getEmail()
-  }
+  })
 
-  handleClick() {
-    const code = document.getElementById('verificationCode').value;
-    fetch('/api/token')
-      .then(response => response.json())
-      .then(data => {
-        if (code === data.code) {
-          window.location.href = './dashboard.html';
-        } else {
-          const invalid = document.getElementById('invalid');
-          invalid.style.display = 'block';
-        }
-      });
-  }
+  
+}
 
-  getEmail() {
-    const emailElement = document.getElementById('email');
-    return emailElement ? emailElement.value : null;
-  }
+async function handleClick() {
+  const code = document.getElementById('verificationCode').value;
+  const token = fetch('/api/token').then(response => response.json());
+  const data = await token;
 
-  getSchoolName() {
-    const schoolNameElement = document.getElementById('schoolName');
-    return schoolNameElement ? schoolNameElement.value : null;
-  }
-    
-
-  init() {
-      document.addEventListener('submit', this.handleSubmit.bind(this));
+  if (code == data.code) {
+    window.location.href = './dashboard.html';
+  } else {
+    const invalid = document.getElementById('invalid');
+    invalid.style.display = 'block';
   }
 }
 
 
-const schoolRegistration = new SchoolRegistration();
+
+
+
+
+
+

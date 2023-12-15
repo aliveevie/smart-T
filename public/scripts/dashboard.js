@@ -32,7 +32,7 @@
       document.getElementById('totalteachers').innerText = responseData.number_of_teachers !== null ? responseData.number_of_teachers : 0;
       document.getElementById('totalstudents').innerText = responseData.number_of_students !== null ? responseData.number_of_students : 0;
       document.getElementById('totalclasses').innerText =  responseData.number_of_classes   !== null ? responseData.number_of_classes  : 0;
-      updateForm.style.display = 'none'
+      updateForm.style.display = 'none';
       //console.log(responseData);
       // Do something with the responseData, e.g., update the UI
     } catch (error) {
@@ -67,15 +67,10 @@
         });
     
         const responseData = await response.json();
-  
-      
-  
-       // console.log(schoolData)
-  
-       
+
         if (response.ok) {
           // Handle success, e.g., show a success message
-        
+            location.reload(true);
         } else {
           // Handle error, e.g., show an error message
           console.error('Registration failed');
@@ -84,9 +79,55 @@
         console.error('Error during registration:', error);
       }
     })
-  
   }
   
+  function handleTeachersManagement() {
+  
+    document.addEventListener('submit', async (e) => {
+          e.preventDefault()
+          const teacherName = document.getElementById('teacherName').value;
+          const teacherPhone = document.getElementById('teacherPhone').value;
+          const teacherEmail = document.getElementById('teacherEmail').value;
+          const teacherRole = document.getElementById('teacherRole').value;
+          const teacherSubject = document.getElementById('teacherSubject').value;
+          const teacherClass = document.getElementById('teacherClass').value;
+  
+          
+          //console.log(numTeacher, numStudents, numClasses)
+
+      try {
+        const response = await fetch('/api/schools/addteachers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            school_id,
+            teacherName,
+            teacherPhone,
+            teacherEmail,
+            teacherRole,
+            teacherSubject,
+            teacherClass
+          }),
+        });
+    
+        const responseData = await response.json();
+
+        if (response.ok) {
+          // Handle success, e.g., show a success message
+            location.reload(true);
+        } else {
+          // Handle error, e.g., show an error message
+          console.error('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error during registration:', error);
+      }
+    })
+  }
+  
+
   
   
 

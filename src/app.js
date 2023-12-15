@@ -133,11 +133,39 @@ app.post('/api/schools/updatedata', async (req, res) => {
         school_id = $4
     RETURNING *
     `, [numTeachers, numStudents, numClasses, school_id])
-    .then(() => res.json({Update: 'Success'}))
+    .then(() => res.json({Update: 'Success'}));
+});
+app.post('/api/schools/addteachers', async (req, res) => {
+  const {
+      school_id,
+      teacherName,
+      teacherPhone,
+      teacherEmail,
+      teacherRole,
+      teacherSubject,
+      teacherClass
+  } = req.body;
 
+  try {
+      const result = await db.query(`
+          INSERT INTO add_teacher (
+              school_id,
+              teacherName,
+              teacherPhone,
+              teacherEmail,
+              teacherRole,
+              teacherSubject,
+              teacherClass
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+      `, [school_id, teacherName, teacherPhone, teacherEmail, teacherRole, teacherSubject, teacherClass]);
 
+      res.json({ success: true });
+  } catch (error) {
+      console.error('Error during teacher insertion:', error);
+      res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
+});
 
-})
 
 
 app.listen(port, () => {

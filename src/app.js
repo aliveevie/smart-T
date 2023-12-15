@@ -127,13 +127,12 @@ app.get('/api/schools/update', async (req, res) => {
           schools_info.school_id = $1
             `, [school_id])
             .then((data) => res.json(data.rows))
-      })
+      });
       
     }else{
-        
         res.json(result.rows);
+        return;
     }
-
 });
 
 app.post('/api/schools/updatedata', async (req, res) => {
@@ -184,6 +183,16 @@ app.post('/api/schools/addteachers', async (req, res) => {
       res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 });
+
+app.get('/api/schools/classupdate', async (req, res) => {
+      const { teacher_id } = req.query;
+
+      const result = await db.query(
+        `SELECT * FROM add_teacher WHERE teacher_id=$1`,
+        [teacher_id]
+      ).then((data) => res.json(data.rows))
+
+})
 
 
 

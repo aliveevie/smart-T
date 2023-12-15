@@ -48,6 +48,7 @@
           <strong>Name:</strong> ${data.teachername}
           <strong>Role:</strong> ${data.teacherrole}
           <strong>Subject:</strong> ${data.teachersubject}
+          <a href="../views/teacher.html?teacher_id=${data.teacher_id}">View Teacher Dashboard</a>
         `;
       
         // Append the li element to the teacher-list

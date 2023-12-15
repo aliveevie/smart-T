@@ -9,13 +9,13 @@
 </head>
 <body>
     <header>
-        <h1> <span id="teacher-name" ></span>Class Information</h1>
+        <h1 id="class-name"></h1>
     </header>
     <main>
         <section class="school-head" >
             <div class="head" >
                 <h3>Form Master</h3>
-                <p id="principal" >Master</p>
+                <p id="form-master" >Master</p>
                 <p id="phone" >070 000 0000</p>
             </div>
         </section>
@@ -25,19 +25,19 @@
             <div class="school-info" >
                 <div class="total-teachers" >
                     <h3>Total Students</h3>
-                    <p id="totalteachers" >0</p>
+                    <p id="totalStudents" >0</p>
                 </div>
                 <div class="total-teachers" >
                     <h3>Number of Subjects</h3>
-                    <p id="totalteachers" >0</p>
+                    <p id="totalSubjects" >0</p>
                 </div>
                 <div class="total-teachers" >
                     <h3>Number of Boys</h3>
-                    <p id="totalteachers" >0</p>
+                    <p id="totalBoys" >0</p>
                 </div>
                 <div class="total-teachers" >
                     <h3>Number of Girls</h3>
-                    <p id="totalteachers" >0</p>
+                    <p id="totalGirls" >0</p>
                 </div>
             </div>
             <div class="button-stat" >
@@ -49,10 +49,6 @@
             <h2>Update Class Details</h2>
             <form id="schoolDetailsForm"  method="post" action="/updateForm">
                 <div class="form-group">
-                    <label for="className">Class Name:</label>
-                    <input type="text" id="className" name="className">
-                </div>
-                <div class="form-group">
                     <label for="numStudents">Number of Students:</label>
                     <input type="number" id="numTeachers" name="numSubjects" min="0">
                 </div>
@@ -60,10 +56,7 @@
                     <label for="numSubjects">Number of Subjects:</label>
                     <input type="number" id="numStudents" name="numStudents" min="0">
                 </div>
-                <div class="form-group">
-                    <label for="numClasses">Number of Classes:</label>
-                    <input type="number" id="numClasses" name="numClasses" min="0">
-                </div>
+              
                 <div class="form-group">
                     <label for="numboys">Number of Boys:</label>
                     <input type="number" id="numClasses" name="numboys" min="0">
@@ -309,6 +302,7 @@
 
     <script src="../scripts/index.js" >
     </script>
+    <script src="../scripts/teacher.js" ></script>
 
 </body>
 </html>

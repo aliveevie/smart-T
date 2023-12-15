@@ -72,7 +72,7 @@ app.get('/api/token', (req, res) => {
 
 app.get('/api/schools/update', async (req, res) => {
     const { school_id } = req.query;
-// administrator | contact_name | phone_number 
+ //   teachername  | teacherphone |    teacheremail     |     teacherrole      |      teachersubject       | teacherclass 
     if(!school_id){
         return
     }
@@ -83,11 +83,19 @@ app.get('/api/schools/update', async (req, res) => {
       schools_info.phone_number,
       update_school_info.number_of_teachers,
       update_school_info.number_of_students,
-      update_school_info.number_of_classes
+      update_school_info.number_of_classes,
+      add_teacher.teacher_id,
+      add_teacher.teachername,
+      add_teacher.teacherphone,
+      add_teacher.teacheremail,
+      add_teacher.teacherrole,
+      add_teacher.teachersubject
     FROM
       schools_info
     JOIN
       update_school_info ON schools_info.school_id = update_school_info.school_id
+    JOIN
+      add_teacher ON schools_info.school_id = add_teacher.school_id
     WHERE
       schools_info.school_id = $1
   `, [school_id]);
@@ -96,25 +104,34 @@ app.get('/api/schools/update', async (req, res) => {
       await db.query('INSERT INTO update_school_info(school_id) VALUES($1)', 
       [school_id])
       .then(async () => {
-          await  db.query(`SELECT
-            schools_info.school_name,
-            schools_info.administrator,
-            schools_info.phone_number,
-            update_school_info.number_of_teachers,
-            update_school_info.number_of_students,
-            update_school_info.number_of_classes
-          FROM
-            schools_info
-          JOIN
-            update_school_info ON schools_info.school_id = update_school_info.school_id
-          WHERE
-            schools_info.school_id = $1
+          await  db.query(` SELECT
+          schools_info.school_name,
+          schools_info.administrator,
+          schools_info.phone_number,
+          update_school_info.number_of_teachers,
+          update_school_info.number_of_students,
+          update_school_info.number_of_classes,
+          add_teacher.teacher_id,
+          add_teacher.teachername,
+          add_teacher.teacherphone,
+          add_teacher.teacheremail,
+          add_teacher.teacherrole,
+          add_teacher.teachersubject
+        FROM
+          schools_info
+        JOIN
+          update_school_info ON schools_info.school_id = update_school_info.school_id
+        JOIN
+          add_teacher ON schools_info.school_id = add_teacher.school_id
+        WHERE
+          schools_info.school_id = $1
             `, [school_id])
-            .then((data) => res.json(data.rows[0]))
+            .then((data) => res.json(data.rows))
       })
       
     }else{
-        res.json(result.rows[0]);
+        
+        res.json(result.rows);
     }
 
 });

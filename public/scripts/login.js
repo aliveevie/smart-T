@@ -1,14 +1,8 @@
-console.log("It's Working Fine!");
-
-
 function handleSubmit() {
     document.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-  
-    
       try {
         const response = await fetch('/api/schools/login', {
           method: 'POST',
@@ -23,17 +17,16 @@ function handleSubmit() {
 
         const responseData = await response.json();
 
-        if(responseData.Error=='Success'){
-                    // Get the current page URL
-            window.location.href = '../views/dashboard.html';
-
-      }else{
-            document.getElementById('error').innerText = responseData.Error;
-      }
+        console.log(responseData);
   
         if (response.ok) {
           // Handle success, e.g., show a success message
-        
+          if(responseData.Error=='Error'){
+            // Get the current page URL
+        document.getElementById('error').innerText = "Invalid Username or password";
+      }else{
+          window.location.href = `../views/dashboard.html?school_id=${responseData.school_id}`;
+    }
             
         } else {
           // Handle error, e.g., show an error message

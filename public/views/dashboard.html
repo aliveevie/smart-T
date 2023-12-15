@@ -33,11 +33,11 @@
           </div>
           <div class="total-teachers" >
               <h3>Total Students</h3>
-              <p id="totalteachers" >0</p>
+              <p id="totalstudents" >0</p>
           </div>
           <div class="total-teachers" >
               <h3>Total Classes</h3>
-              <p id="totalteachers" >0</p>
+              <p id="totalclasses" >0</p>
           </div>
       </div>
       <div class="button-stat" >
@@ -48,7 +48,7 @@
        
         <section class="school-details" id="showUpdateForm" >
             <h2>Update School Details</h2>
-            <form id="schoolDetailsForm"  method="post" action="/updateForm">
+            <form id="schoolDetailsForm"  method="post"  action='/api/schools/updatedata'>
                 <div class="form-group">
                     <label for="numTeachers">Number of Teachers:</label>
                     <input type="number" id="numTeachers" name="numTeachers" min="0">
@@ -62,7 +62,7 @@
                     <input type="number" id="numClasses" name="numClasses" min="0">
                 </div>
                 <!-- Add more fields as needed -->
-                <button type="submit" >Update Details</button>
+                <button type="submit" onclick="handleSubmit()" >Update Details</button>
             </form>
         </section>
         <section class="update-teachers" >

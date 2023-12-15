@@ -73,10 +73,12 @@ app.get('/api/token', (req, res) => {
 
 app.get('/api/schools/update', async (req, res) => {
     const { school_id } = req.query;
-
+// administrator | contact_name | phone_number 
     const result = await db.query(`
     SELECT
       schools_info.school_name,
+      schools_info.administrator,
+      schools_info.phone_number,
       update_school_info.number_of_teachers,
       update_school_info.number_of_students,
       update_school_info.number_of_classes
@@ -91,9 +93,11 @@ app.get('/api/schools/update', async (req, res) => {
     if(result.rows.length==0){
       await db.query('INSERT INTO update_school_info(school_id) VALUES($1)', 
       [school_id])
-      .then(() => {
-            db.query(`SELECT
+      .then(async () => {
+          await  db.query(`SELECT
             schools_info.school_name,
+            schools_info.administrator,
+            schools_info.phone_number,
             update_school_info.number_of_teachers,
             update_school_info.number_of_students,
             update_school_info.number_of_classes
@@ -104,13 +108,36 @@ app.get('/api/schools/update', async (req, res) => {
           WHERE
             schools_info.school_id = $1
             `, [school_id])
+            .then((data) => res.json(data.rows[0]))
       })
-      .then((data) => res.json(data.rows[0]));
+      
     }else{
         res.json(result.rows[0]);
     }
 
 });
+
+app.post('/api/schools/updatedata', async (req, res) => {
+    const { numTeachers, numStudents, numClasses, school_id } = req.body;
+
+    console.log(req.body);
+
+    const result = await db.query(`
+    UPDATE 
+        update_School_info
+    SET 
+        number_of_teachers = $1,
+        number_of_students = $2,
+        number_of_classes  = $3
+    WHERE
+        school_id = $4
+    RETURNING *
+    `, [numTeachers, numStudents, numClasses, school_id])
+    .then(() => res.json({Update: 'Success'}))
+
+
+
+})
 
 
 app.listen(port, () => {

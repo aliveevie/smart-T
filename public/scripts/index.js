@@ -1,5 +1,4 @@
 
-const updateForm = document.getElementById('showUpdateForm');
 const updateTeachers = document.getElementById('showTeachers');
 const remove = document.getElementById("removeTeachers");
 const showContinuous = document.getElementById("cont-ass");
@@ -17,9 +16,7 @@ const call_attance = document.getElementById('call-student');
 const show_attandance = document.getElementById('show-attandance');
 
 
-function getUpdateForm(){
-    updateForm.style.display = 'block'
-}
+
 
 function hideDetails(e){
     e.preventDefault();
@@ -118,4 +115,4 @@ function handleResultCalculation() {
 }
 
 
-document.addEventListener('submit', hideDetails);
+// document.addEventListener('submit', hideDetails);

@@ -187,11 +187,48 @@ app.post('/api/schools/addteachers', async (req, res) => {
 app.get('/api/schools/classupdate', async (req, res) => {
       const { teacher_id } = req.query;
 
+    //   update_school_info ON schools_info.school_id = update_school_info.school_id
+
       const result = await db.query(
-        `SELECT * FROM add_teacher WHERE teacher_id=$1`,
+        ` SELECT 
+              * 
+          FROM 
+              add_teacher AS at
+          JOIN
+              update_class_info AS uci ON at.teacher_id = uci.teacher_id
+          WHERE
+              at.teacher_id = $1;
+            `,
         [teacher_id]
       ).then((data) => res.json(data.rows))
+})
 
+app.post('/api/schools/updateclassinfo', async (req, res) => {
+ const {
+    numStudents,
+    numSubjects,
+    numBoys,
+    numGirls,
+    teacher_id
+  } = req.body
+
+  const result = await db.query(`
+    SELECT school_id FROM add_teacher WHERE teacher_id=$1
+  `, [teacher_id]);
+
+  const school_id = await result.rows[0].school_id;
+  
+  const updateClass = await db.query(`
+        INSERT INTO 
+            update_class_info(teacher_id, school_id, number_of_boys, number_of_girls, number_of_subjects, number_of_students)
+        VALUES($1, $2, $3, $4, $5, $6)
+        RETURNING *
+        `, [teacher_id, school_id, numBoys, numGirls, numSubjects, numStudents])
+        .then((data) => res.json({Success: "Success"}))
+})
+
+app.post('/api/schools/addstudents/', async (req, res) => {
+        console.log(req.body);
 })
 
 

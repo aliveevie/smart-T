@@ -33,11 +33,11 @@
                 </div>
                 <div class="total-teachers" >
                     <h3>Number of Boys</h3>
-                    <p id="totalBoys" >0</p>
+                    <p id="numBoys" >0</p>
                 </div>
                 <div class="total-teachers" >
                     <h3>Number of Girls</h3>
-                    <p id="totalGirls" >0</p>
+                    <p id="numGirls" >0</p>
                 </div>
             </div>
             <div class="button-stat" >
@@ -47,26 +47,26 @@
 
         <section class="school-details" id="showUpdateForm" >
             <h2>Update Class Details</h2>
-            <form id="schoolDetailsForm"  method="post" action="/updateForm">
+            <form id="schoolDetailsForm"  method="post">
                 <div class="form-group">
-                    <label for="numStudents">Number of Students:</label>
-                    <input type="number" id="numTeachers" name="numSubjects" min="0">
+                    <label for="numStudents">Number of Students</label>
+                    <input type="number" id="numStudents" name="numStudents" min="0">
                 </div>
                 <div class="form-group">
-                    <label for="numSubjects">Number of Subjects:</label>
-                    <input type="number" id="numStudents" name="numStudents" min="0">
+                    <label for="numSubjects">Number of Subjects</label>
+                    <input type="number" id="numSubjects" name="numSubjects" min="0">
                 </div>
               
                 <div class="form-group">
-                    <label for="numboys">Number of Boys:</label>
-                    <input type="number" id="numClasses" name="numboys" min="0">
+                    <label for="numboys">Number of Boys</label>
+                    <input type="number" id="numBoys" name="numboys" min="0">
                 </div>
                 <div class="form-group">
-                    <label for="numboys">Number of Girls:</label>
-                    <input type="number" id="numClasses" name="numgirls" min="0">
+                    <label for="numboys">Number of Girls</label>
+                    <input type="number" id="numGirls" name="numgirls" min="0">
                 </div>
                 <!-- Add more fields as needed -->
-                <button type="submit" >Update Details</button>
+                <button type="submit"  onclick="handleUpdateClass()"  >Update Details</button>
             </form>
         </section>
         <section class="update-teachers" >
@@ -93,14 +93,14 @@
                 </div>
                 <div class="form-group">
                     <label for="sex">Enter Student Sex</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
+                    <input type="text" id="gender" name="gender">
                 </div>
                 <div class="form-group">
                     <label for="town">Home Town</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
+                    <input type="text" id="homeTown" name="homeTowm">
                 </div>
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Add Student</button>
+                <button type="submit" onclick="handleAddStudents()" >Add Student</button>
             </form>
         </section>
 

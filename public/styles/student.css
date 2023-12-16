@@ -80,7 +80,7 @@ strong {
 }
 
 #showReportSheet{
-    display: none;
+    display: block;
 }
 
 #add-subject{

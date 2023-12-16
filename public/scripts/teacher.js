@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <strong>Name:</strong> ${data.student_name}
         <strong>Reg Number:</strong> ${data.student_reg_number}
         <strong>Home Town:</strong> ${data.home_town}
-        <a href="../views/ca.html?student_id=${data.student_id}">View Student Dashboard</a>
+        <a href="../views/student.html?student_id=${data.student_id}">View Student Dashboard</a>
       `;
     
       // Append the li element to the teacher-list

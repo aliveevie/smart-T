@@ -52,7 +52,7 @@
                 <tr id="student-data">  
                 </tr>
             </table>
-            <button class="buttons"  onclick="showAssessmentForm()" >Update Student CA</button>
+            <button class="buttons"  onclick="showAssessmentForm()">Update Student CA</button>
             <button class="buttons" onclick="printStudentCA()" >Print Student Result</button>
         </div>
         </section>
@@ -120,12 +120,12 @@
             </table>
 
             <section id="add-subject" >
-                <form method="post" action="">
+                <form method="post">
                     <div class="form-group">
                         <label for="subject">Subject Name:</label>
-                        <input type="text" id="subjectName" name="subjectName" placeholder="Enter the name of the subject" >
+                        <input type="text" id="subject" name="subject" placeholder="Enter the name of the subject" >
                     </div>
-                    <button class="buttons" >Add</button>
+                    <button class="buttons" type="submit" onclick="handleUpdateSubject()"  >Add</button>
                 </form>
             </section>
             <section id="delete-subject" >

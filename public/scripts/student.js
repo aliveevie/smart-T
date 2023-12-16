@@ -59,3 +59,43 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Handle the error, e.g., display an error message to the user
     }
   });
+
+
+  function handleUpdateSubject() {
+  
+    document.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          
+          const subject = document.getElementById('subject').value;
+          console.log(subject)
+      
+          //console.log(numTeacher, numStudents, numClasses)
+  
+      try {
+        const response = await fetch('/api/schools/addsubjects', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            student_id,
+            subject
+          }),
+        });
+    
+        const responseData = await response.json();
+  
+  
+        if (response.ok) {
+          // Handle success, e.g., show a success message
+            location.reload(true);
+        } else {
+          // Handle error, e.g., show an error message
+          console.error('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error during registration:', error);
+      }
+    })
+  }

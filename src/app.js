@@ -264,6 +264,20 @@ app.post('/api/schools/addstudents/', async (req, res) => {
         .then(() => res.json({Success: "Success"}))
 })
 
+app.get('/api/schools/studentupdate', async (req, res) => {
+        const { student_id } = req.query;
+
+        const result = await db.query(`
+            SELECT 
+                * 
+            FROM 
+                add_student
+            WHERE
+                student_id=$1
+          `, [student_id])
+          .then((data) => res.json(data.rows))
+});
+
 
 
 app.listen(port, () => {

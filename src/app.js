@@ -280,7 +280,25 @@ app.get('/api/schools/studentupdate', async (req, res) => {
 
 
 app.post('/api/schools/addsubjects', async (req, res) => {
-        console.log(req.body)
+        const { student_id, subject } = req.body;
+
+        const result = await db.query(`
+            SELECT
+                class_id, teacher_id, school_id
+            FROM
+                add_student
+            WHERE
+                student_id=$1
+            `, [student_id])
+
+            const { class_id, teacher_id, school_id } = await result.rows[0]
+            
+            const insert = await db.query(`
+              INSERT INTO 
+                  add_subject(student_id, class_id, teacher_id, school_id, subject)
+              VALUES($1, $2, $3, $4, $5)
+            `, [student_id, class_id, teacher_id, school_id, subject])
+            .then(() => res.json({Success: 'Success'}))
 });
 
 app.listen(port, () => {

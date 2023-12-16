@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const responseData = await response.json();
     
-    console.log(responseData);
+    // console.log(responseData);
 
     document.getElementById('class-name').innerText = responseData[0].teacherclass;
     document.getElementById('form-master').innerText = responseData[0].teachername;
@@ -39,26 +39,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateForm.style.display = 'none';
     //console.log(responseData);
     // Do something with the responseData, e.g., update the UI
-  //  const teachersList = document.getElementById('teacher-list');
-  /*
-  *
+   const studentsList = document.getElementById('student-list');
+
+  
   for(const data of responseData){
       const listItem = document.createElement('li');
 
       // Set the innerHTML of the li element with the data
       listItem.innerHTML = `
-        <strong>ID:</strong> ${data.teacher_id} 
-        <strong>Email:</strong> ${data.teacheremail}
-        <strong>Name:</strong> ${data.teachername}
-        <strong>Role:</strong> ${data.teacherrole}
-        <strong>Subject:</strong> ${data.teachersubject}
-        <a href="../views/teacher.html?teacher_id=${data.teacher_id}">View Teacher Dashboard</a>
+        <strong>ID:</strong> ${data.student_id} 
+        <strong>Name:</strong> ${data.student_name}
+        <strong>Reg Number:</strong> ${data.student_reg_number}
+        <strong>Home Town:</strong> ${data.home_town}
+        <a href="../views/ca.html?student_id=${data.student_id}">View Student Dashboard</a>
       `;
     
       // Append the li element to the teacher-list
-      teachersList.appendChild(listItem);
+      studentsList.appendChild(listItem);
     }
-*/
+
 
   } catch (error) {
     console.error('Error:', error);

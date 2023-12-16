@@ -196,6 +196,8 @@ app.get('/api/schools/classupdate', async (req, res) => {
               add_teacher AS at
           JOIN
               update_class_info AS uci ON at.teacher_id = uci.teacher_id
+          JOIN 
+              add_student AS st ON at.teacher_id = st.teacher_id
           WHERE
               at.teacher_id = $1;
             `,

@@ -130,7 +130,8 @@ function handleAddStudents() {
           studentName,
           regNumber,
           gender,
-          homeTown
+          homeTown,
+          teacher_id
         }),
       });
   

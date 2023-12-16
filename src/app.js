@@ -228,7 +228,38 @@ app.post('/api/schools/updateclassinfo', async (req, res) => {
 })
 
 app.post('/api/schools/addstudents/', async (req, res) => {
-        console.log(req.body);
+    const  { 
+        studentName,
+        regNumber, 
+        gender,
+        homeTown,
+        teacher_id
+      } = req.body;
+
+      const result = await db.query(
+        `SELECT 
+            uci.class_id,
+            uci.school_id
+        FROM 
+            add_teacher AS at
+        JOIN
+            update_class_info AS uci ON at.teacher_id = uci.teacher_id
+        WHERE
+            at.teacher_id = $1;
+    
+            `,
+        [teacher_id]
+      )
+      const { class_id, school_id } = await result.rows[0];
+//  student_name | student_reg_number | gender | home_town 
+
+      const insertStudent = await db.query(`
+          INSERT INTO 
+            add_student(class_id, teacher_id, school_id, student_name, student_reg_number, gender, home_town)
+          VALUES
+            ($1, $2, $3, $4, $5, $6, $7)
+        `, [class_id, teacher_id, school_id, studentName, regNumber, gender, homeTown])
+        .then(() => res.json({Success: "Success"}))
 })
 
 

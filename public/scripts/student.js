@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           
           const subject = document.getElementById('subject').value;
         
-      
           //console.log(numTeacher, numStudents, numClasses)
   
       try {
@@ -148,12 +147,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
   }
 
+  function handledeleteSubject() {
+  
+    document.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const subject = document.getElementById('subjectName').value;
+        
+          //console.log(numTeacher, numStudents, numClasses)
+  
+      try {
+        const response = await fetch('/api/schools/deletesubject', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            student_id,
+            subject
+          }),
+        });
+    
+        const responseData = await response.json();
+  
+  
+        if (response.ok) {
+          // Handle success, e.g., show a success message
+            location.reload(true);
+        } else {
+          // Handle error, e.g., show an error message
+          console.error('Registration failed');
+        }
+      } catch (error) {
+        console.error('Error during registration:', error);
+      }
+    })
+  }
+
+
 
   function handleResultCalculation() {
 
     document.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      let resultData = {};
+      let subjects_list = [];
 
       examElements.forEach(async (examElement, index) => {
         const caElement = caElements[index];
@@ -192,29 +230,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         const remark_value = remarks.value;
 
       
-        const resultData = {
-          subjects_name,
-          caValue,
-          examValue,
-          totalMarks,
-          grade_value,
-          remark_value
-        }
-
-        const response = await fetch("/api/school/studentresults", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            resultData
-          }),
-        });
-
-       
+        resultData[subjects_name] = [{
+            ca: caValue,
+            exam: examValue,
+            total: totalMarks,
+            grades: grade_value,
+            remarks: remark_value
+        }];
+        subjects_list.push(subjects_name);
+            
+        
     });
 
-    
+    const response = await fetch("/api/school/studentresults", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        resultData,
+        subjects_list,
+        student_id
+      }),
+    });
+
+    if(response.ok){
+      location.reload(true);
+    }
 
 
      

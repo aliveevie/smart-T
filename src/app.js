@@ -72,12 +72,12 @@ app.get('/api/token', (req, res) => {
 
 app.get('/api/schools/update', async (req, res) => {
     const { school_id } = req.query;
- //   teachername  | teacherphone |    teacheremail     |     teacherrole      |      teachersubject       | teacherclass 
+   
     if(!school_id){
         return
     }
-    const result = await db.query(`
-    SELECT
+    const result = await db.query(
+    `SELECT
       schools_info.school_name,
       schools_info.administrator,
       schools_info.phone_number,
@@ -97,8 +97,8 @@ app.get('/api/schools/update', async (req, res) => {
     JOIN
       add_teacher ON schools_info.school_id = add_teacher.school_id
     WHERE
-      schools_info.school_id = $1
-  `, [school_id]);
+      schools_info.school_id = $1`
+  , [school_id]);
   
     if(result.rows.length==0){
       await db.query('INSERT INTO update_school_info(school_id) VALUES($1)', 
@@ -316,9 +316,68 @@ app.post('/api/schools/addsubjects', async (req, res) => {
             .then(() => res.json({Success: 'Success'}))
 });
 
+app.post('/api/schools/deletesubject', async (req, res) => {
+    const { student_id, subject } = req.body;
+
+    const deletsubject = await db.query(`
+            DELETE
+            FROM add_subject
+            WHERE
+                student_id = $1
+            AND
+                subject = $2
+    `, [student_id, subject])
+    .then((data) => res.json({data: "Success"}))
+})
+
 
 app.post("/api/school/studentresults", async (req, res) => {
-        console.log(req.body);
+    /*
+            caValue: 12,
+            examValue: 4,
+            totalMarks: '16',
+            grade_value: 'F',
+            remark_value: 'Fail'
+/           subject | ca | exam | total | grade |  remarks 
+    */
+const { student_id, subjects_list, resultData } = req.body;
+
+for (const subject of subjects_list) {
+  const data = resultData[subject];
+
+  for (const item of data) {
+    const result = await db.query(`
+      UPDATE add_subject
+      SET
+        ca = $1,
+        exam = $2,
+        total = $3,
+        grade = $4,
+        remarks = $5
+      WHERE
+        student_id = $6
+        AND subject = $7
+    `, [item.ca, item.exam, item.total, item.grades, item.remarks, student_id, subject])
+    .then((data) => {
+      // Handle the success response
+      
+    })
+    .catch((error) => {
+      // Handle the error
+      console.error('Error:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+  }
+}
+
+// Send the success response outside the loop, once all updates are done
+res.json({ success: 'Success' });
+
+       
+
+        //  ca | exam | total | grade | remarks 
+
+        
 })
 
 app.listen(port, () => {

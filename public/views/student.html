@@ -24,7 +24,7 @@
             </div>
           
         <div class="subjects"  id="showSubjects"  >
-            <table  id="table-data">
+            <table  id="report-data">
                 <tr>
                     <th>Subject</th>
                     <th>CA</th>
@@ -41,7 +41,7 @@
         <section id="Assessment-form">
             <h3>Complete the Student Assessment Form</h3>
             <form action="" method="post">
-                <table>
+                <table  id="edit-report">
                     <tr>
                         <th>Subject</th>
                         <th>CA</th>
@@ -50,24 +50,10 @@
                         <th>Grade</th>
                         <th>Remarks</th>
                     </tr>
-                    <tr>
-                        <td>English</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
-                    <tr>
-                        <td>Mathematics</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
+                   
+                
                 </table>
-                <button class="buttons" onclick="handleResultCalculation()" >Update Result</button>
+                <button class="buttons"  type="button" onclick="handleResultCalculation()" >Update Result</button>
                 <input type="submit" value="Submit" onclick="hideAssessmentForm()" >
             </form>
         </section>
@@ -79,25 +65,8 @@
                         <th>Subject</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>English</td>
-                    </tr>
-                    <tr>
-                        <td>Mathematics</td>
-                    </tr>
-                    <tr>
-                        <td>Physics</td>
-                    </tr>
-                    <tr>
-                        <td>Biology</td>
-                    </tr>
-                    <tr>
-                        <td>Chemistry</td>
-                    </tr>
-                    <tr>
-                        <td>Geography</td>
-                    </tr>
+                <tbody id="subject-list" >
+                  
                 </tbody>
             </table>
 

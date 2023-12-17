@@ -5,17 +5,11 @@ const showContinuous = document.getElementById("cont-ass");
 const showAddSubjects = document.getElementById('add-subject');
 const deleteSubjects = document.getElementById('delete-subject');
 const reportSheet = document.getElementById('showReportSheet');
-const caElements = document.querySelectorAll('#ca');
-const examElements = document.querySelectorAll('#exam');
-const totalElements = document.querySelectorAll('#total');
-const gradeElements = document.querySelectorAll('#grade');
-const remarksElements = document.querySelectorAll('#remarks');
+
 const showScores = document.getElementById('showSubjects');
 const assessmentscores = document.getElementById('Assessment-form');
 const call_attance = document.getElementById('call-student');
 const show_attandance = document.getElementById('show-attandance');
-
-
 
 
 function hideDetails(e){
@@ -54,10 +48,7 @@ function handleAssessment(){
     showContinuous.style.display = 'none';
 }
 
-function showAssessmentForm(){
-    reportSheet.style.display = 'none';
-    assessmentscores.style.display = 'block';
-}
+
 
 function hideAssessmentForm(){
     reportSheet.style.display = 'block';
@@ -78,41 +69,5 @@ function handleAttanceCall(){
         call_attance.style.display = 'none'
     }
 }
-
-
-function handleResultCalculation() {
-    examElements.forEach((examElement, index) => {
-        const caElement = caElements[index];
-        const totalElement = totalElements[index];
-        const examValue = parseFloat(examElement.value);
-        const caValue = parseFloat(caElement.value);
-        const grades = gradeElements[index];
-        const remarks = remarksElements[index];
-        
-        totalElement.value = caValue + examValue;
-
-        const totalMarks = totalElement.value;
-        
-        if(totalMarks <= 39){
-            grades.value = 'F'
-            remarks.value = 'Fail'
-        }else if(totalMarks <= 49){
-            grades.value = 'D'
-            remarks.value = 'Fair'
-        }else if(totalMarks <= 59){
-            grades.value = 'C'
-            remarks.value = 'Credit'
-        }else if(totalMarks <= 69){
-            grades.value = 'B'
-            remarks.value = 'Very Good'
-        }else if(totalMarks >= 70 && totalMarks <= 100 ){
-            grades.value = 'A'
-            remarks.value = 'Excellent'
-        }
-           
-    });
-
-}
-
 
 // document.addEventListener('submit', hideDetails);

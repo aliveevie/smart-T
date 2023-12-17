@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           
                 editItems.innerHTML = `
                   <td  id="subject-name" name=${data.subject} >${data.subject}</td>
-                  <td><input type='number' id='ca'      name='ca'    value='0'/></td>
-                  <td><input type='number' id='exam'    name='exam'  value='0'/></td>
-                  <td><input type='number' id='total'   name='total' value='0'/></td>
-                  <td><input type='text'   id='grades'   name='grades' value='F'/></td>
-                  <td><input type='text'   id='remarks' name='remarks' value='Fail'/></td>
+                  <td><input type='number' id='ca'      name='ca'    value=${parseFloat(data.ca)}></td>
+                  <td><input type='number' id='exam'    name='exam'  value=${parseFloat(data.exam)}></td>
+                  <td><input type='number' id='total'   name='total' value=${parseFloat(data.total)}></td>
+                  <td><input type='text'   id='grades'   name='grades' value=${data.grade}></td>
+                  <td><input type='text'   id='remarks' name='remarks' value=${data.remarks}></td>
                   
                   `;
 

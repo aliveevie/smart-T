@@ -367,11 +367,13 @@ for (const subject of subjects_list) {
       console.error('Error:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
-  }
+  } 
 }
 
+
+
 // Send the success response outside the loop, once all updates are done
-res.json({ success: 'Success' });
+    res.json({ success: 'Success' });
 
        
 

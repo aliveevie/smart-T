@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                   <td><input type='number' id='total'   name='total' value='0'/></td>
                   <td><input type='text'   id='grades'   name='grades' value='F'/></td>
                   <td><input type='text'   id='remarks' name='remarks' value='Fail'/></td>
-                `;
+                  
+                  `;
 
                 subjects.innerHTML = `
                     <td>${data.subject}</td>
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
 
 
-      examElements.forEach((examElement, index) => {
+      examElements.forEach(async (examElement, index) => {
         const caElement = caElements[index];
         const totalElement = totalElements[index];
         const examValue = parseFloat(examElement.value);
@@ -162,17 +163,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const grades = gradeElements[index];
         const remarks = remarksElements[index];
         const subjectelms = subjectElements[index];
-        
         const subjects_name = subjectelms.innerText;
-        console.log(subjects_name)
+        
         
         totalElement.value = caValue + examValue;
 
         const totalMarks = totalElement.value;
-
        
-        
-        if(totalMarks <= 39){
+
+          if(totalMarks <= 39){
             grades.value = 'F'
             remarks.value = 'Fail'
         }else if(totalMarks <= 49){
@@ -187,24 +186,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         }else if(totalMarks >= 70 ){
             grades.value = 'A'
             remarks.value = 'Excellent'
-        } 
-        
-        
-        
-    });
+        }
 
-     
+        const grade_value = grades.value;
+        const remark_value = remarks.value;
+
+      
+        const resultData = {
+          subjects_name,
+          caValue,
+          examValue,
+          totalMarks,
+          grade_value,
+          remark_value
+        }
+
         const response = await fetch("/api/school/studentresults", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              caValue,
-              examValue,
-
+            resultData
           }),
         });
+
+       
+    });
+
+    
+
+
+     
+        
 })
     
   

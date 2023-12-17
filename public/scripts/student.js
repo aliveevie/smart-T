@@ -1,17 +1,30 @@
 const params = new URLSearchParams(document.location.search);
 const student_id = params.get("student_id");
-console.log(student_id);
+
+let examElements;
+let caElements;
+let totalElements;
+let gradeElements;
+let remarksElements;
+let subjectElements;
+
 
 let editScores = false;
 
 function showAssessmentForm(){
   reportSheet.style.display = 'none';
   assessmentscores.style.display = 'block';
-  editScores = true;
-  console.log('You are clicking and not working!', editScores)
+
+  examElements = document.querySelectorAll('#exam');
+  caElements = document.querySelectorAll('#ca');
+  totalElements = document.querySelectorAll('#total');
+  gradeElements = document.querySelectorAll('#grades');
+  remarksElements = document.querySelectorAll('#remarks');
+  subjectElements = document.querySelectorAll('#subject-name');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+   
     // Assuming school_id is defined before this point
     const url = `/api/schools/studentupdate?student_id=${student_id}`;
   
@@ -51,13 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
            
               for (const data of responseData) {
 
-                const caElements = document.querySelectorAll('#ca');
-                const examElements = document.querySelectorAll('#exam');
-                const totalElements = document.querySelectorAll('#total');
-                const gradeElements = document.querySelectorAll('#grade');
-                const remarksElements = document.querySelectorAll('#remarks');
-
-                console.log(caElements)
+            
 
                 const listItem = document.createElement('tr');
                 const editItems = document.createElement('tr');
@@ -73,11 +80,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `;
           
                 editItems.innerHTML = `
-                  <td>${data.subject}</td>
+                  <td  id="subject-name" name=${data.subject} >${data.subject}</td>
                   <td><input type='number' id='ca'      name='ca'    value='0'/></td>
                   <td><input type='number' id='exam'    name='exam'  value='0'/></td>
                   <td><input type='number' id='total'   name='total' value='0'/></td>
-                  <td><input type='text'   id='grade'   name='grade' value='F'/></td>
+                  <td><input type='text'   id='grades'   name='grades' value='F'/></td>
                   <td><input type='text'   id='remarks' name='remarks' value='Fail'/></td>
                 `;
 
@@ -88,8 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Append the tr element to the current reportSheet
                 reportSheets.appendChild(listItem);
                 editReport.appendChild(editItems);
-                subjectList.appendChild(subjects);
-               
+                subjectList.appendChild(subjects);       
               }
         
           
@@ -143,18 +149,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   function handleResultCalculation() {
-    console.log('You are clicking!')
-    examElements.forEach((examElement, index) => {
+
+    document.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+
+      examElements.forEach((examElement, index) => {
         const caElement = caElements[index];
         const totalElement = totalElements[index];
         const examValue = parseFloat(examElement.value);
         const caValue = parseFloat(caElement.value);
         const grades = gradeElements[index];
         const remarks = remarksElements[index];
+        const subjectelms = subjectElements[index];
+        
+        const subjects_name = subjectelms.innerText;
+        console.log(subjects_name)
         
         totalElement.value = caValue + examValue;
 
         const totalMarks = totalElement.value;
+
+       
         
         if(totalMarks <= 39){
             grades.value = 'F'
@@ -168,11 +184,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         }else if(totalMarks <= 69){
             grades.value = 'B'
             remarks.value = 'Very Good'
-        }else if(totalMarks >= 70 && totalMarks <= 100 ){
+        }else if(totalMarks >= 70 ){
             grades.value = 'A'
             remarks.value = 'Excellent'
-        }
-           
+        } 
+        
+        
+        
     });
 
+     
+        const response = await fetch("/api/school/studentresults", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              caValue,
+              examValue,
+
+          }),
+        });
+})
+    
+  
+  
+
 }
+
+
+
+
+  

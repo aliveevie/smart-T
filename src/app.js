@@ -316,6 +316,11 @@ app.post('/api/schools/addsubjects', async (req, res) => {
             .then(() => res.json({Success: 'Success'}))
 });
 
+
+app.post("/api/school/studentresults", async (req, res) => {
+        console.log(req.body);
+})
+
 app.listen(port, () => {
     console.log('Server is listening on port:',port);
 });

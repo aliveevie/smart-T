@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('student-name').innerText = responseData[0].student_name;
             document.getElementById('student').innerText = responseData[0].student_name;
             document.getElementById('reg-num').innerText = responseData[0].student_reg_number;
-          //  document.getElementById('phone').innerText = responseData[0].teacherphone;
+            document.getElementById('class').innerText = responseData[0].teacherclass;
           //  document.getElementById('totalStudents').innerText = responseData.number_of_subjects !== null ? responseData[0].number_of_subjects : 0;
           //  document.getElementById('totalSubjects').innerText = responseData.number_of_students !== null ? responseData[0].number_of_students : 0;
           //  document.getElementById('numBoys').innerText = responseData.number_of_boys !== null ? responseData[0].number_of_boys : 0;
@@ -34,25 +34,38 @@ document.addEventListener('DOMContentLoaded', async () => {
            // updateForm.style.display = 'none';
             //console.log(responseData);
             // Do something with the responseData, e.g., update the UI
-           // const studentsList = document.getElementById('student-list');
+           
+            const reportSheet = document.getElementById('table-data');
   
-    /*
+    
     for(const data of responseData){
-        const listItem = document.createElement('li');
+        const listItem = document.createElement('tr');
+
+        /*
+          <tr>
+              <td>English</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>F</td>
+              <td>Poor</td>
+        </tr>
+        */
   
         // Set the innerHTML of the li element with the data
         listItem.innerHTML = `
-          <strong>ID:</strong> ${data.student_id} 
-          <strong>Name:</strong> ${data.student_name}
-          <strong>Reg Number:</strong> ${data.student_reg_number}
-          <strong>Home Town:</strong> ${data.home_town}
-          <a href="../views/student.html?student_id=${data.student_id}">View Student Dashboard</a>
+            <td>${data.subject}</td>
+            <td>${data.ca}</td>
+            <td>${data.exam}</td>
+            <td>${data.total}</td>
+            <td>${data.grade}</td>
+            <td>${data.remarks}</td>
         `;
       
         // Append the li element to the teacher-list
-        studentsList.appendChild(listItem);
+        reportSheet.appendChild(listItem);
       }
- */
+ 
   
     } catch (error) {
       console.error('Error:', error);
@@ -68,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           
           
           const subject = document.getElementById('subject').value;
-          console.log(subject)
+        
       
           //console.log(numTeacher, numStudents, numClasses)
   

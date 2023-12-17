@@ -267,13 +267,28 @@ app.post('/api/schools/addstudents/', async (req, res) => {
 app.get('/api/schools/studentupdate', async (req, res) => {
         const { student_id } = req.query;
 
+//  subject   | ca | exam | total | grade | remarks
+
         const result = await db.query(`
             SELECT 
-                * 
+                ads.student_id,
+                ads.student_name,
+                ads.student_reg_number,
+                adt.subject,
+                adt.ca,
+                adt.exam,
+                adt.total,
+                adt.grade,
+                adt.remarks,
+                at.teacherclass 
             FROM 
-                add_student
+                add_student AS ads
+            JOIN
+                add_subject AS adt ON ads.student_id = adt.student_id
+            JOIN
+                add_teacher AS at ON at.teacher_id = ads.teacher_id
             WHERE
-                student_id=$1
+                ads.student_id=$1
           `, [student_id])
           .then((data) => res.json(data.rows))
 });

@@ -4,8 +4,8 @@ const path = require('path');
 const port = 3000;
 const db = require('./db')
 const bodyparser = require('body-parser');
-const token = require('./functions/generateToken');
-const sendToken = require('./functions/sendToken');
+//const token = require('./functions/generateToken');
+//const sendToken = require('./functions/sendToken');
 const code = token();
 // const bcrypt = require('bcrypt')
 

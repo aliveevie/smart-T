@@ -125,7 +125,7 @@ app.get('/api/schools/update', async (req, res) => {
         WHERE
           schools_info.school_id = $1
             `, [school_id])
-            .then((data) => console.log(data))
+            .then((data) => res.json(data.rows))
       });
 
    
@@ -139,7 +139,7 @@ app.get('/api/schools/update', async (req, res) => {
 app.post('/api/schools/updatedata', async (req, res) => {
     const { numTeachers, numStudents, numClasses, school_id } = req.body;
 
-    console.log(req.body);
+   
 
     const result = await db.query(`
     UPDATE 

@@ -1,7 +1,7 @@
 # School Grading System
 
 ## Overview
-The School Grading System is a simple tool designed for teachers to efficiently grade student assessments, manage continuous assessment records, and create report sheets.
+The School Grading System is a simple tool designed for teachers to efficiently grade student assessments, manage continuous assessment records, and create report sheets. [live url](https://school-grading.onrender.com/)
 
 ## Features and Interfaces
 
@@ -71,6 +71,10 @@ Now you have successfully set up and run the School Grading System on your local
 
 If you encounter any issues or have questions, refer to the [Contributing](#contributing) section for information on how to get help and contribute to the project.
 
+
+## Useful Links
+- [Project Demo](https://school-grading.onrender.com/)
+
 ## Contributing
 If you want to contribute to the development of the School Grading System, follow these steps:
 1. Fork the repository.
@@ -78,6 +82,3 @@ If you want to contribute to the development of the School Grading System, follo
 3. Make your changes and commit them.
 4. Push your changes to your fork.
 5. Open a pull request to the main repository.
-
-## Useful Links
-- [Project Demo](#)

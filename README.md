@@ -38,31 +38,34 @@ The School Grading System is a simple tool designed for teachers to efficiently 
 To get started with the School Grading System, follow these steps:
 
 1. **Fork the Repository:**
-   - Fork the School Grading System repository by navigating to https://github.com/aliveevie/smart-T.
+   - Fork the School Grading System repository by navigating to 
+    ```bash
+    https://github.com/aliveevie/smart-T.
+    ```
 
 2. **Clone the Repository:**
    - Open a terminal and run the following command to clone the forked repository to your local machine:
-     ```bash
-    https://github.com/aliveevie/smart-T
-     ```
+    ```bash
+   cd clone https://github.com/aliveevie/smart-T
+    ```
 
 3. **Navigate to the Project:**
    - Change into the project directory:
-     ```bash
-     cd Smart-T
-     ```
+    ```bash
+   cd Smart-T
+    ```
 
 4. **Install Dependencies:**
    - Install any required dependencies for the project:
-     ```bash
-     npm install
-     ```
+    ```bash
+    npm install
+    ```
 
 5. **Run the Application:**
    - Start the School Grading System application:
-     ```bash
-     npm start
-     ```
+    ```bash
+    npm start
+    ```
 
 6. **Access the Application:**
    - Open your web browser and navigate to `http://localhost:3000` to access the School Grading System.
@@ -82,3 +85,9 @@ If you want to contribute to the development of the School Grading System, follo
 3. Make your changes and commit them.
 4. Push your changes to your fork.
 5. Open a pull request to the main repository.
+
+## Feel Free to Contact Me
+
+- **Twitter:** [@iabdulkarim474](https://twitter.com/iabdulkarim474)
+- **LinkedIn:** [Ibrahim Abdul-Karim](https://www.linkedin.com/in/ibrahim193/)
+- **Portfolio:** [ibadulkarim.co](https://ibadulkarim.co)

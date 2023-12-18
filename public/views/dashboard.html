@@ -13,15 +13,15 @@
         <header class="header-back" >
             <h1  id="school-name" ></h1>
             <div class="back-button" >
-               <i class="fas fas-back" >Back</i>
+           
             </div>
       </header>
   
       <section class="school-head" >
       <div class="head" >
           <h3>School Director/Principal/Admin</h3>
-          <p id="principal" >Principal</p>
-          <p id="phone" >070 000 0000</p>
+          <p id="principal" ></p>
+          <p id="phone" ></p>
       </div>
   </section>
   <section class="school-statistics">
@@ -115,18 +115,18 @@
         <section class="teacher-enrollment"  id="removeTeachers" >
             <h2>Remove Teacher</h2>
             <p>Add the Necessary details to remove your teacher</p>
-            <form method="post" action="">
+            <form method="post">
                 <div class="form-group">
                     <label for="teacherName">Teacher Name:</label>
-                    <input type="text" id="teacherName" name="teacherName">
+                    <input type="text" id="teacher-name" name="teacherName">
                 </div>
                 <div class="form-group">
                     <label for="teacherclass">Teacher Class:</label>
-                    <input type="text" id="teacherClass" name="teacherSubject">
+                    <input type="text" id="teacher-class" name="teacherSubject">
                 </div>
              
                 <!-- Add more fields for teacher information -->
-                <button type="submit">Remove Teacher</button>
+                <button type="submit" onclick="handleRemoveTeacher()" >Remove Teacher</button>
             </form>
         </section>
        

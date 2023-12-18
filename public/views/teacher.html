@@ -59,11 +59,11 @@
               
                 <div class="form-group">
                     <label for="numboys">Number of Boys</label>
-                    <input type="number" id="numBoys" name="numboys" min="0">
+                    <input type="number" id="num-boys" name="numBoys" min="0">
                 </div>
                 <div class="form-group">
                     <label for="numboys">Number of Girls</label>
-                    <input type="number" id="numGirls" name="numgirls" min="0">
+                    <input type="number" id="num-girls" name="numGirls" min="0">
                 </div>
                 <!-- Add more fields as needed -->
                 <button type="submit"  onclick="handleUpdateClass()"  >Update Details</button>
@@ -210,86 +210,8 @@
                 <button class="buttons" onclick="handleRemoveSubject()" >Delete Subjects</button>
            
             </section>
-        </section>
+        
 
-        <section class="report-sheet" id="showReportSheet">
-            <div class="header">
-                <h1 id="studentName">StudentName Continous Assessment</h1>
-            </div>
-            <div class="student-info">
-                <h2>Student Information</h2>
-                <p  id="studentName"  ><strong>Student Name:</strong>Student Name</p>
-                <p  id="regNum"><strong>Registration Number:</strong> 12345</p>
-                <p  id="class"><strong>Class:</strong> 10A</p>
-                <p  id="year"><strong>Academic Year:</strong> 2023-2024</p>
-            </div>
-          
-        <div class="subjects"  id="showSubjects"  >
-            <table>
-                <tr>
-                    <th>Subject</th>
-                    <th>CA</th>
-                    <th>Exam</th>
-                    <th>Total</th>
-                    <th>Grade</th>
-                    <th>Remarks</th>
-                </tr>
-                <tr>
-                    <td>English</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>F</td>
-                    <td>Poor</td>
-                </tr>
-                <tr>
-                    <td>Math</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>F</td>
-                    <td>Poor</td>
-                </tr>
-                <tr id="student-data">  
-                </tr>
-            </table>
-            <button class="buttons"  onclick="showAssessmentForm()" >Update Student CA</button>
-            <button class="buttons" onclick="printStudentCA()" >Print Student Result</button>
-        </div>
-        </section>
-        <section id="Assessment-form">
-            <h3>Complete the Student Assessment Form</h3>
-            <form action="" method="post">
-                <table>
-                    <tr>
-                        <th>Subject</th>
-                        <th>CA</th>
-                        <th>Exam</th>
-                        <th>Total</th>
-                        <th>Grade</th>
-                        <th>Remarks</th>
-                    </tr>
-                    <tr>
-                        <td>English</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
-                    <tr>
-                        <td>Mathematics</td>
-                        <td><input type="number" id="ca" name="ca" value="0"></td>
-                        <td><input type="number" id="exam" name="exam" value="0"></td>
-                        <td><input type="number" id="total" name="total" value="0"></td>
-                        <td><input type="text" id="grade" name="grade" value="F"></td>
-                        <td><input type="text" id="remarks" name="remarks" value="Poor"></td>
-                    </tr>
-                </table>
-                <button class="buttons" onclick="handleResultCalculation()" >Update Result</button>
-                <input type="submit" value="Submit" onclick="hideAssessmentForm()" >
-            </form>
-        </section>
 
         
         

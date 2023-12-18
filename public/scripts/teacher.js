@@ -26,16 +26,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const responseData = await response.json();
+
+    const lastIndex = await responseData.length;
     
-    // console.log(responseData);
+    console.log(responseData);
 
     document.getElementById('class-name').innerText = responseData[0].teacherclass;
     document.getElementById('form-master').innerText = responseData[0].teachername;
     document.getElementById('phone').innerText = responseData[0].teacherphone;
     document.getElementById('totalStudents').innerText = responseData.number_of_subjects !== null ? responseData[0].number_of_subjects : 0;
     document.getElementById('totalSubjects').innerText = responseData.number_of_students !== null ? responseData[0].number_of_students : 0;
-    document.getElementById('numBoys').innerText = responseData.number_of_boys !== null ? responseData[0].number_of_boys : 0;
-    document.getElementById('numGirls').innerText =  responseData.number_of_girls   !== null ? responseData[0].number_of_girls  : 0;
+    document.getElementById('numBoys').innerText = responseData.number_of_boys !== null ? responseData[lastIndex - 1].number_of_boys : 0;
+    document.getElementById('numGirls').innerText =  responseData.number_of_girls   !== null ? responseData[lastIndex - 1].number_of_girls  : 0;
     updateForm.style.display = 'none';
     //console.log(responseData);
     // Do something with the responseData, e.g., update the UI
@@ -72,10 +74,10 @@ function handleUpdateClass() {
         
         const numStudents = document.getElementById('numStudents').value;
         const numSubjects = document.getElementById('numSubjects').value;
-        const numBoys = document.getElementById('numBoys').value;
-        const numGirls = document.getElementById('numGirls').value;
+        const numBoys = document.getElementById('num-boys').value;
+        const numGirls = document.getElementById('num-girls').value;
     
-        //console.log(numTeacher, numStudents, numClasses)
+      
 
     try {
       const response = await fetch('/api/schools/updateclassinfo', {
@@ -97,7 +99,7 @@ function handleUpdateClass() {
 
       if (response.ok) {
         // Handle success, e.g., show a success message
-          location.reload(true);
+        location.reload(true);
       } else {
         // Handle error, e.g., show an error message
         console.error('Registration failed');

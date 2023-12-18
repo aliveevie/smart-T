@@ -72,10 +72,9 @@ app.get('/api/token', (req, res) => {
 
 app.get('/api/schools/update', async (req, res) => {
     const { school_id } = req.query;
+    console.log(school_id)
    
-    if(!school_id){
-        return
-    }
+   
     const result = await db.query(
     `SELECT
       schools_info.school_name,
@@ -100,7 +99,7 @@ app.get('/api/schools/update', async (req, res) => {
       schools_info.school_id = $1`
   , [school_id]);
   
-    if(result.rows.length==0){
+    if(result.rows.length===0){
       await db.query('INSERT INTO update_school_info(school_id) VALUES($1)', 
       [school_id])
       .then(async () => {
@@ -126,8 +125,10 @@ app.get('/api/schools/update', async (req, res) => {
         WHERE
           schools_info.school_id = $1
             `, [school_id])
-            .then((data) => res.json(data.rows))
+            .then((data) => console.log(data))
       });
+
+   
       
     }else{
         res.json(result.rows);
@@ -213,6 +214,8 @@ app.post('/api/schools/updateclassinfo', async (req, res) => {
     numGirls,
     teacher_id
   } = req.body
+
+  console.log(req.body)
 
   const result = await db.query(`
     SELECT school_id FROM add_teacher WHERE teacher_id=$1
@@ -369,18 +372,18 @@ for (const subject of subjects_list) {
     });
   } 
 }
-
-
-
 // Send the success response outside the loop, once all updates are done
-    res.json({ success: 'Success' });
+    res.json({ success: 'Success' });  
+});
 
-       
+app.post('/api/schools/removeteachers', async (req, res) => {
+       const { school_id, teacherName } = req.body;
 
-        //  ca | exam | total | grade | remarks 
-
-        
-})
+       const result = db.query(`
+        DELETE FROM add_teacher
+        WHERE school_id = $1 AND teacherName = $2
+       `, [school_id, teacherName]).then((data) => res.json({succes: 'Success'}))
+});
 
 app.listen(port, () => {
     console.log('Server is listening on port:',port);

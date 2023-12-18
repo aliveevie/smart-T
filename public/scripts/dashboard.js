@@ -27,6 +27,7 @@
   
       const responseData = await response.json();
       
+      console.log(responseData)
 
       document.getElementById('school-name').innerText = responseData[0].school_name;
       document.getElementById('principal').innerText = responseData[0].administrator;
@@ -147,11 +148,43 @@
     })
   }
 
-  function handleShowTeacher(){
 
+  function handleRemoveTeacher(){
+    document.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const teacherName = document.getElementById('teacher-name').value;
+      const teacherClass = document.getElementById('teacher-class').value;
+
+      //console.log(numTeacher, numStudents, numClasses)
+
+  try {
+    const response = await fetch('/api/schools/removeteachers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        school_id,
+        teacherName,
+        teacherClass
+       
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (response.ok) {
+      // Handle success, e.g., show a success message
+        location.reload(true);
+    } else {
+      // Handle error, e.g., show an error message
+      console.error('Registration failed');
+    }
+  } catch (error) {
+    console.error('Error during registration:', error);
   }
-  
-
+})
+  }
   
   
 

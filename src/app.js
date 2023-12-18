@@ -215,8 +215,7 @@ app.post('/api/schools/updateclassinfo', async (req, res) => {
     teacher_id
   } = req.body
 
-  console.log(req.body)
-
+  
   const result = await db.query(`
     SELECT school_id FROM add_teacher WHERE teacher_id=$1
   `, [teacher_id]);
@@ -365,11 +364,7 @@ for (const subject of subjects_list) {
       // Handle the success response
       
     })
-    .catch((error) => {
-      // Handle the error
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
+   
   } 
 }
 // Send the success response outside the loop, once all updates are done

@@ -7,7 +7,8 @@ const bodyparser = require('body-parser');
 const token = require('./functions/generateToken');
 //const sendToken = require('./functions/sendToken');
 const code = token();
-// const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt');
+
 
 
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -28,7 +29,7 @@ app.post('/api/schools/register', async (req, res) => {
 
     const result = await db.query('SELECT school_id FROM schools_info WHERE email_address=$1', [email]);
     
-    console.log(result.rows[0]);
+  //  console.log(result.rows[0]);
 
     if(result.rows.length==0){
        db.query( 'INSERT INTO schools_info(tokens, school_name, administrator, contact_name, phone_number, email_address, school_address, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING school_id, school_name, administrator, contact_name, phone_number, email_address, school_address', 
@@ -66,9 +67,13 @@ app.post('/api/schools/login', async (req, res) => {
 })
 
 
-app.get('/api/token', (req, res) => {
+/*
+*app.get('/api/token', (req, res) => {
     res.json({ code: code });
 });
+*
+*/
+
 
 app.get('/api/schools/update', async (req, res) => {
     const { school_id } = req.query;
@@ -127,8 +132,6 @@ app.get('/api/schools/update', async (req, res) => {
             `, [school_id])
             .then((data) => res.json(data.rows))
       });
-
-   
       
     }else{
         res.json(result.rows);
@@ -154,6 +157,7 @@ app.post('/api/schools/updatedata', async (req, res) => {
     `, [numTeachers, numStudents, numClasses, school_id])
     .then(() => res.json({Update: 'Success'}));
 });
+
 app.post('/api/schools/addteachers', async (req, res) => {
   const {
       school_id,
@@ -229,7 +233,7 @@ app.post('/api/schools/updateclassinfo', async (req, res) => {
         RETURNING *
         `, [teacher_id, school_id, numBoys, numGirls, numSubjects, numStudents])
         .then((data) => res.json({Success: "Success"}))
-})
+});
 
 app.post('/api/schools/addstudents/', async (req, res) => {
     const  { 
@@ -362,7 +366,7 @@ for (const subject of subjects_list) {
     `, [item.ca, item.exam, item.total, item.grades, item.remarks, student_id, subject])
     .then((data) => {
       // Handle the success response
-      
+      console.log(data)
     })
    
   } 
@@ -379,6 +383,7 @@ app.post('/api/schools/removeteachers', async (req, res) => {
         WHERE school_id = $1 AND teacherName = $2
        `, [school_id, teacherName]).then((data) => res.json({succes: 'Success'}))
 });
+
 
 app.listen(port, () => {
     console.log('Server is listening on port:',port);
